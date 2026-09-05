@@ -1,0 +1,1034 @@
+/* =========================================================
+   FONTS
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+
+/* =========================================================
+   ONECODE — DESIGN TOKENS
+========================================================= */
+
+:root {
+
+  /* ─────────────────────────────────────────────────────
+     BRAND
+  ───────────────────────────────────────────────────── */
+
+  --color-brand-primary: #006eff;
+  --color-brand-secondary: #008cff;
+  --color-brand-cyan: #00b7ff;
+
+  --color-brand-dark: #020611;
+  --color-brand-dark-2: #030b1b;
+  --color-brand-dark-3: #061329;
+
+
+  /* ─────────────────────────────────────────────────────
+     BACKGROUND
+  ───────────────────────────────────────────────────── */
+
+  --bg-main: #020611;
+  --bg-secondary: #030817;
+  --bg-card: #050e20;
+  --bg-card-alt: #07152c;
+
+
+  /* ─────────────────────────────────────────────────────
+     BORDERS
+  ───────────────────────────────────────────────────── */
+
+  --border-light: rgba(255, 255, 255, 0.05);
+  --border-medium: rgba(255, 255, 255, 0.08);
+
+  --border-brand: rgba(0, 110, 255, 0.25);
+  --border-brand-strong: rgba(0, 140, 255, 0.45);
+
+
+  /* ─────────────────────────────────────────────────────
+     TEXT
+  ───────────────────────────────────────────────────── */
+
+  --text-title: #ffffff;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+
+
+  /* ─────────────────────────────────────────────────────
+     GLOWS
+  ───────────────────────────────────────────────────── */
+
+  --glow-blue: rgba(0, 110, 255, 0.30);
+  --glow-blue-soft: rgba(0, 110, 255, 0.15);
+  --glow-cyan: rgba(0, 183, 255, 0.20);
+
+}
+
+@keyframes float-diamond {
+  0%, 100% {
+    transform: translateY(0) rotate(45deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(45deg);
+  }
+}
+
+@keyframes float-diamond-reverse {
+  0%, 100% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  50% {
+    transform: translateY(20px) rotate(-45deg);
+  }
+}
+
+.animate-float-diamond {
+  animation: float-diamond 8s ease-in-out infinite;
+}
+
+.animate-float-diamond-reverse {
+  animation: float-diamond-reverse 10s ease-in-out infinite;
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+
+html {
+
+  scroll-behavior: smooth;
+
+  -webkit-text-size-adjust: 100%;
+
+  background: var(--bg-main);
+
+}
+
+
+body {
+
+  margin: 0;
+
+  padding: 0;
+
+  min-width: 320px;
+
+  background:
+
+    radial-gradient(circle at 80% 10%,
+      rgba(0, 110, 255, 0.035),
+      transparent 35%),
+
+    radial-gradient(circle at 10% 80%,
+      rgba(0, 183, 255, 0.025),
+      transparent 35%),
+
+    var(--bg-main);
+
+  color: var(--text-body);
+
+  font-family:
+    'Plus Jakarta Sans',
+    'Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+
+  font-feature-settings:
+    'cv02',
+    'cv03',
+    'cv04',
+    'cv11';
+
+  font-optical-sizing: auto;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+
+}
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+#root {
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  background: transparent;
+
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+
+  background: rgba(0, 110, 255, 0.30);
+
+  color: #ffffff;
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+
+  width: 8px;
+
+  height: 8px;
+
+}
+
+
+::-webkit-scrollbar-track {
+
+  background: #020611;
+
+}
+
+
+::-webkit-scrollbar-thumb {
+
+  background:
+
+    linear-gradient(to bottom,
+      #075ed1,
+      #003d91);
+
+  border-radius: 10px;
+
+  border: 2px solid #020611;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+  background:
+
+    linear-gradient(to bottom,
+      #008cff,
+      #006eff);
+
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+:focus-visible {
+
+  outline: 2px solid var(--color-brand-secondary);
+
+  outline-offset: 3px;
+
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+
+  color: inherit;
+
+  text-decoration: none;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button {
+
+  font-family: inherit;
+
+}
+
+
+/* =========================================================
+   GLASS HEADER
+========================================================= */
+
+.glass-header {
+
+  background:
+
+    linear-gradient(to bottom,
+      rgba(2, 6, 17, 0.92),
+      rgba(2, 6, 17, 0.72));
+
+  backdrop-filter:
+    blur(18px) saturate(150%);
+
+  -webkit-backdrop-filter:
+    blur(18px) saturate(150%);
+
+  border-bottom:
+
+    1px solid rgba(255, 255, 255, 0.05);
+
+}
+
+
+/* =========================================================
+   DARK MESH
+========================================================= */
+
+.subtle-mesh {
+
+  background:
+
+    radial-gradient(circle at 20% 20%,
+      rgba(0, 110, 255, 0.08),
+      transparent 35%),
+
+    radial-gradient(circle at 80% 70%,
+      rgba(0, 183, 255, 0.05),
+      transparent 35%),
+
+    #020611;
+
+}
+
+
+/* =========================================================
+   BLUE GRID BACKGROUND
+========================================================= */
+
+.blue-grid-bg {
+
+  background:
+
+    radial-gradient(circle at 15% 5%,
+      rgba(0, 110, 255, 0.16),
+      transparent 35%),
+
+    radial-gradient(circle at 85% 65%,
+      rgba(0, 140, 255, 0.09),
+      transparent 38%),
+
+    radial-gradient(circle at 50% 35%,
+      rgba(0, 183, 255, 0.035),
+      transparent 40%),
+
+    linear-gradient(145deg,
+      #020611 0%,
+      #030817 50%,
+      #020611 100%);
+
+}
+
+
+/* =========================================================
+   GRID OVERLAY
+========================================================= */
+
+.blue-grid-overlay {
+
+  background-image:
+
+    linear-gradient(rgba(0, 110, 255, 0.13) 1px,
+      transparent 1px),
+
+    linear-gradient(90deg,
+      rgba(0, 110, 255, 0.13) 1px,
+      transparent 1px);
+
+  background-size: 78px 78px;
+
+  -webkit-mask-image:
+
+    linear-gradient(to bottom,
+      #000 0%,
+      #000 38%,
+      transparent 90%);
+
+  mask-image:
+
+    linear-gradient(to bottom,
+      #000 0%,
+      #000 38%,
+      transparent 90%);
+
+}
+
+
+/* =========================================================
+   SMALL GRID
+========================================================= */
+
+.blue-grid-small {
+
+  background-image:
+
+    linear-gradient(rgba(0, 140, 255, 0.08) 1px,
+      transparent 1px),
+
+    linear-gradient(90deg,
+      rgba(0, 140, 255, 0.08) 1px,
+      transparent 1px);
+
+  background-size: 20px 20px;
+
+}
+
+
+/* =========================================================
+   AMBIENT GLOW — PRIMARY
+========================================================= */
+
+.glow-ambient-primary {
+
+  background:
+
+    radial-gradient(circle at center,
+      rgba(0, 110, 255, 0.32) 0%,
+      rgba(0, 110, 255, 0.12) 35%,
+      rgba(0, 110, 255, 0) 72%);
+
+  filter: blur(10px);
+
+}
+
+
+/* =========================================================
+   AMBIENT GLOW — SECONDARY
+========================================================= */
+
+.glow-ambient-secondary {
+
+  background:
+
+    radial-gradient(circle at center,
+      rgba(0, 183, 255, 0.28) 0%,
+      rgba(0, 183, 255, 0.08) 38%,
+      rgba(0, 183, 255, 0) 72%);
+
+  filter: blur(12px);
+
+}
+
+
+/* =========================================================
+   ABSTRACT CIRCLES
+========================================================= */
+
+.abstract-circle {
+
+  position: absolute;
+
+  border:
+
+    1px solid rgba(0, 110, 255, 0.14);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   HERO ORBITS
+========================================================= */
+
+.hero-orbit {
+
+  position: absolute;
+
+  border:
+
+    1px solid rgba(0, 110, 255, 0.13);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+}
+
+
+/* ─────────────────────────────────────────────────────
+   ORBIT DOT
+───────────────────────────────────────────────────── */
+
+.hero-orbit::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 8px;
+
+  height: 8px;
+
+  top: 18%;
+
+  left: 10%;
+
+  background:
+
+    linear-gradient(135deg,
+      #00b7ff,
+      #006eff);
+
+  border-radius: 50%;
+
+  box-shadow:
+
+    0 0 0 6px rgba(0, 110, 255, 0.10),
+
+    0 0 20px rgba(0, 140, 255, 0.65);
+
+}
+
+
+/* =========================================================
+   ORBIT ONE
+========================================================= */
+
+.hero-orbit-one {
+
+  width: 610px;
+
+  height: 610px;
+
+  right: -330px;
+
+  top: 55px;
+
+  animation:
+
+    orbitFloat 12s ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   ORBIT TWO
+========================================================= */
+
+.hero-orbit-two {
+
+  width: 370px;
+
+  height: 370px;
+
+  left: -260px;
+
+  bottom: 20px;
+
+  animation:
+
+    orbitFloat 14s ease-in-out -4s infinite reverse;
+
+}
+
+
+/* =========================================================
+   ORBIT ANIMATION
+========================================================= */
+
+@keyframes orbitFloat {
+
+  0%,
+  100% {
+
+    transform:
+      translate3d(0, 0, 0) rotate(0deg);
+
+  }
+
+  50% {
+
+    transform:
+      translate3d(0, -15px, 0) rotate(5deg);
+
+  }
+
+}
+
+
+/* =========================================================
+   FLOAT
+========================================================= */
+
+@keyframes float {
+
+  0%,
+  100% {
+
+    transform:
+      translateY(0px);
+
+  }
+
+  50% {
+
+    transform:
+      translateY(-12px);
+
+  }
+
+}
+
+
+/* =========================================================
+   FLOAT SUBTLE
+========================================================= */
+
+@keyframes float-subtle {
+
+  0% {
+
+    transform:
+      translateY(0px);
+
+  }
+
+  50% {
+
+    transform:
+      translateY(-6px);
+
+  }
+
+  100% {
+
+    transform:
+      translateY(0px);
+
+  }
+
+}
+
+
+.animate-float-subtle {
+
+  animation:
+
+    float-subtle 4s ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   PULSE SOFT
+========================================================= */
+
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+
+    opacity: 1;
+
+    transform:
+      scale(1);
+
+  }
+
+  50% {
+
+    opacity: 0.85;
+
+    transform:
+      scale(1.04);
+
+  }
+
+}
+
+
+.animate-pulse-soft {
+
+  animation:
+
+    pulse-soft 2.5s ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   GLOW PULSE
+========================================================= */
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+
+    opacity: 0.5;
+
+    filter:
+      blur(60px);
+
+  }
+
+  50% {
+
+    opacity: 0.85;
+
+    filter:
+      blur(80px);
+
+  }
+
+}
+
+
+.animate-glow-pulse {
+
+  animation:
+
+    glowPulse 5s ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   SHIMMER
+========================================================= */
+
+@keyframes shimmer {
+
+  0% {
+
+    background-position:
+      -200% center;
+
+  }
+
+  100% {
+
+    background-position:
+      200% center;
+
+  }
+
+}
+
+
+.animate-shimmer {
+
+  background-size:
+    200% auto;
+
+  animation:
+
+    shimmer 4s linear infinite;
+
+}
+
+
+/* =========================================================
+   BLUE TEXT GRADIENT
+========================================================= */
+
+.text-gradient-blue {
+
+  background:
+
+    linear-gradient(90deg,
+      #006eff 0%,
+      #008cff 45%,
+      #00b7ff 100%);
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  color: transparent;
+
+}
+
+
+/* =========================================================
+   BLUE BORDER GLOW
+========================================================= */
+
+.border-glow-blue {
+
+  border:
+
+    1px solid rgba(0, 110, 255, 0.35);
+
+  box-shadow:
+
+    0 0 20px rgba(0, 110, 255, 0.08);
+
+}
+
+
+/* =========================================================
+   CARD GLOW
+========================================================= */
+
+.card-glow {
+
+  background:
+
+    linear-gradient(145deg,
+      rgba(5, 18, 40, 0.92),
+      rgba(2, 8, 22, 0.92));
+
+  border:
+
+    1px solid rgba(0, 110, 255, 0.18);
+
+  box-shadow:
+
+    0 20px 60px rgba(0, 0, 0, 0.35),
+
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+
+}
+
+
+/* =========================================================
+   GLASS CARD
+========================================================= */
+
+.glass-card {
+
+  background:
+
+    rgba(3, 11, 27, 0.72);
+
+  border:
+
+    1px solid rgba(255, 255, 255, 0.06);
+
+  backdrop-filter:
+    blur(18px) saturate(140%);
+
+  -webkit-backdrop-filter:
+    blur(18px) saturate(140%);
+
+  box-shadow:
+
+    0 20px 60px rgba(0, 0, 0, 0.30);
+
+}
+
+
+/* =========================================================
+   IMAGE GLOW
+========================================================= */
+
+.image-glow {
+
+  filter:
+
+    drop-shadow(0 0 35px rgba(0, 110, 255, 0.28)) drop-shadow(0 20px 50px rgba(0, 0, 0, 0.35));
+
+}
+
+
+/* =========================================================
+   NEON LINE
+========================================================= */
+
+.neon-line {
+
+  height: 1px;
+
+  background:
+
+    linear-gradient(90deg,
+      transparent,
+      rgba(0, 110, 255, 0.7),
+      rgba(0, 183, 255, 0.9),
+      transparent);
+
+  box-shadow:
+
+    0 0 12px rgba(0, 140, 255, 0.35);
+
+}
+
+
+/* =========================================================
+   DOT GRID
+========================================================= */
+
+.dot-grid {
+
+  background-image:
+
+    radial-gradient(rgba(0, 140, 255, 0.35) 1px,
+      transparent 1px);
+
+  background-size: 22px 22px;
+
+}
+
+
+/* =========================================================
+   TECH PARTICLES
+========================================================= */
+
+.tech-particle {
+
+  position: absolute;
+
+  width: 4px;
+
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #008cff;
+
+  box-shadow:
+
+    0 0 12px rgba(0, 140, 255, 0.8);
+
+  animation:
+
+    particleFloat 6s ease-in-out infinite;
+
+}
+
+
+@keyframes particleFloat {
+
+  0%,
+  100% {
+
+    transform:
+      translateY(0) translateX(0);
+
+    opacity: 0.25;
+
+  }
+
+  50% {
+
+    transform:
+      translateY(-20px) translateX(8px);
+
+    opacity: 1;
+
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .hero-orbit-one {
+
+    width: 420px;
+
+    height: 420px;
+
+    right: -250px;
+
+    top: 100px;
+
+  }
+
+
+  .hero-orbit-two {
+
+    width: 280px;
+
+    height: 280px;
+
+    left: -200px;
+
+    bottom: 0;
+
+  }
+
+
+  .blue-grid-overlay {
+
+    background-size: 55px 55px;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .hero-orbit-one {
+
+    width: 300px;
+
+    height: 300px;
+
+    right: -190px;
+
+  }
+
+
+  .hero-orbit-two {
+
+    width: 220px;
+
+    height: 220px;
+
+    left: -160px;
+
+  }
+
+}
