@@ -190,32 +190,32 @@ export default function Portfolio() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
 
         {/* Cabeçalho */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
-            <Sparkles size={13} className="text-blue-600" />
-            <span>Portfólio &amp; Cases Reais</span>
+        <div className="text-left sm:text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>Nossos Projetos</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight mb-4">
-            Projetos que transformam ideias em resultados.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3 leading-[1.15]">
+            Soluções que se transformam em <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-400">resultados</span>
           </h2>
 
-          <p className="text-slate-600 text-base sm:text-lg">
-            De landing pages que vendem a sistemas que automatizam empresas inteiras. Veja o que construímos para clientes que confiam na One Code.
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+            Confira alguns dos projetos que já desenvolvemos e veja como ajudamos empresas a inovar, escalar e alcançar seus objetivos.
           </p>
         </div>
 
-        {/* Filtros de Categoria */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12 sm:mb-16">
+        {/* Filtros de Categoria em Pills Horizontais com scroll fluido no mobile */}
+        <div className="flex overflow-x-auto sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-10 sm:mb-16 pb-2 no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0">
           {CATEGORIES.map(cat => {
             const isSelected = activeFilter === cat.id;
             return (
               <button
                 key={cat.id}
                 onClick={() => setActiveFilter(cat.id)}
-                className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 ${isSelected
-                    ? 'bg-slate-950 text-white shadow-md shadow-slate-950/20 scale-[1.02]'
-                    : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/90 hover:border-slate-300 hover:bg-slate-50'
+                className={`shrink-0 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 ${isSelected
+                    ? 'bg-[#0066FF] text-white shadow-lg shadow-blue-600/30 scale-[1.02]'
+                    : 'bg-slate-900/80 text-slate-300 hover:text-white border border-slate-700/60 hover:bg-slate-800'
                   }`}
               >
                 {cat.label}
@@ -225,15 +225,15 @@ export default function Portfolio() {
         </div>
 
         {/* Grid de Cards de Projetos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-blue-300/80 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1.5"
+              className="group bg-slate-900/90 rounded-3xl border border-slate-800/80 shadow-xl hover:shadow-2xl hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1.5"
             >
               <div>
                 {/* Visual Preview / Mockup Simulado ou Real do Projeto */}
-                <div className={`relative h-52 sm:h-56 bg-linear-to-br ${project.accentColor} p-4 sm:p-5 flex flex-col justify-between text-white overflow-hidden`}>
+                <div className={`relative h-48 sm:h-56 bg-linear-to-br ${project.accentColor} p-4 sm:p-5 flex flex-col justify-between text-white overflow-hidden`}>
                   {/* Se houver imagem real de preview (screenshot) */}
                   {project.previewImg ? (
                     <div className="absolute inset-0">
@@ -242,32 +242,25 @@ export default function Portfolio() {
                         alt={project.title}
                         className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/75 to-slate-950/40" />
+                      <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/70 to-slate-950/30" />
                     </div>
                   ) : (
                     <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[16px_16px]" />
                   )}
 
-                  {/* Barra de título do browser simulado */}
-                  <div className="relative z-10 flex items-center justify-between">
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                      {project.preview.domain && (
-                        <span className="hidden sm:inline-block text-[10px] text-slate-300 font-mono font-medium px-2 py-0.5 rounded bg-slate-900/80 border border-slate-700/60 ml-1.5">
-                          {project.preview.domain}
-                        </span>
-                      )}
-                    </div>
+                  {/* Badges superiores flutuantes exatamente como na imagem enviada */}
+                  <div className="relative z-10 flex items-center justify-between gap-2">
+                    <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-600/90 text-white backdrop-blur-md shadow-md">
+                      {project.category === 'systems' ? '• SISTEMAS WEB' : project.category === 'sites' ? '• SITE INSTITUCIONAL' : '• ESTRATÉGIA'}
+                    </span>
 
                     {project.isLive ? (
-                      <span className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/25 text-emerald-300 border border-emerald-500/40 backdrop-blur-md">
+                      <span className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        {project.preview.badge}
+                        MVP ONLINE
                       </span>
                     ) : (
-                      <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md">
+                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-slate-700/60 backdrop-blur-md">
                         {project.preview.badge}
                       </span>
                     )}
@@ -280,21 +273,21 @@ export default function Portfolio() {
                         <img
                           src={project.logoImg}
                           alt={project.title}
-                          className="h-7 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] filter brightness-110"
+                          className="h-6 sm:h-7 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] filter brightness-110"
                         />
                       </div>
                     )}
-                    <p className="text-lg sm:text-xl font-black leading-tight drop-shadow-sm mb-1 text-white">
+                    <p className="text-base sm:text-xl font-black leading-tight drop-shadow-sm mb-1 text-white">
                       {project.preview.headline}
                     </p>
-                    <p className="text-xs text-white/85 line-clamp-2">
+                    <p className="text-xs text-white/80 line-clamp-2">
                       {project.preview.sub}
                     </p>
                   </div>
 
                   {/* Rodapé do preview */}
-                  <div className="relative z-10 flex items-center justify-between pt-2 border-t border-white/20">
-                    <span className="text-[11px] font-medium text-white/90 flex items-center gap-1.5">
+                  <div className="relative z-10 flex items-center justify-between pt-2 border-t border-white/10">
+                    <span className="text-[11px] font-medium text-white/80 flex items-center gap-1.5">
                       {project.isLive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />}
                       {project.preview.stats}
                     </span>
@@ -303,14 +296,14 @@ export default function Portfolio() {
                         href={project.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[11px] font-bold px-2.5 py-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-md transition-colors flex items-center gap-1"
+                        className="text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <span>{project.preview.cta}</span>
-                        <ExternalLink size={11} strokeWidth={2.5} />
+                        <span>Ver projeto</span>
+                        <ArrowUpRight size={13} strokeWidth={2.5} />
                       </a>
                     ) : (
-                      <span className="text-[11px] font-bold px-2 py-0.5 bg-white text-slate-900 rounded-md">
+                      <span className="text-[11px] font-bold text-white/70">
                         {project.preview.cta}
                       </span>
                     )}
@@ -318,15 +311,8 @@ export default function Portfolio() {
                 </div>
 
                 {/* Conteúdo do Card */}
-                <div className="p-6 sm:p-7">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-extrabold uppercase tracking-wider text-blue-600 flex items-center gap-1.5">
-                      {project.isLive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
-                      {project.categoryLabel}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-extrabold text-slate-950 mb-2 group-hover:text-blue-600 transition-colors flex items-center gap-2">
+                <div className="p-5 sm:p-7">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors flex items-center gap-2">
                     {project.url ? (
                       <a
                         href={project.url}
@@ -335,34 +321,31 @@ export default function Portfolio() {
                         className="hover:underline flex items-center gap-2"
                       >
                         <span>{project.title}</span>
-                        <ExternalLink size={16} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
+                        <ExternalLink size={16} className="text-slate-400 group-hover:text-blue-400 transition-colors shrink-0" />
                       </a>
                     ) : (
                       project.title
                     )}
                   </h3>
 
-                  <p className="text-slate-600 text-sm leading-relaxed mb-5">
+                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
                     {project.tagline}
                   </p>
 
                   {/* Destaque de Métrica / Resultado */}
-                  <div className={`mb-5 p-3 rounded-xl border flex items-center gap-2.5 ${project.isLive
-                      ? 'bg-emerald-50/80 border-emerald-200/80 text-emerald-950'
-                      : 'bg-blue-50/70 border-blue-100 text-blue-950'
-                    }`}>
-                    <CheckCircle size={16} className={`shrink-0 ${project.isLive ? 'text-emerald-600' : 'text-blue-600'}`} strokeWidth={2.5} />
-                    <span className="text-xs font-bold">
+                  <div className="mb-4 p-2.5 sm:p-3 rounded-xl border bg-slate-950/60 border-slate-800 text-slate-200 flex items-center gap-2.5">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></div>
+                    <span className="text-xs font-semibold text-slate-300">
                       {project.metric}
                     </span>
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
+                  <div className="flex flex-wrap gap-1.5 mb-2">
                     {project.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md"
+                        className="text-[10px] sm:text-[11px] font-semibold text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/50"
                       >
                         {tag}
                       </span>
@@ -371,18 +354,17 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* Botões de Ação */}
-              <div className="px-6 sm:px-7 pb-5 pt-3 border-t border-slate-100 flex flex-col gap-2.5 bg-slate-50/60">
+              {/* Botões de Ação no estilo mobile da imagem */}
+              <div className="px-5 sm:px-7 pb-5 pt-3 border-t border-slate-800/80 flex flex-col gap-2.5 bg-slate-950/40">
                 {project.url && (
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noreferrer"
-                    className={`w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-md active:scale-[0.98] group/live ${project.btnColor || 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/20'
-                      }`}
+                    className="w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white bg-[#0066FF] hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 active:scale-[0.98]"
                   >
-                    <span>{project.urlCta || 'Acessar Projeto Online'}</span>
-                    <ExternalLink size={15} className="group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5 transition-transform" />
+                    <span>Ver demonstração</span>
+                    <ArrowRight size={15} />
                   </a>
                 )}
 
@@ -390,23 +372,10 @@ export default function Portfolio() {
                   href={`https://wa.me/5511999999999?text=${encodeURIComponent(`Olá, gostei do projeto ${project.title}${project.url ? ` (${project.url})` : ''} no portfólio da One Code e quero um resultado similar para o meu negócio.`)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 group/btn"
-                  style={{
-                    background: '#0B172A',
-                    color: '#e2e8f0',
-                    boxShadow: '0 0 0 1px rgba(0,179,255,0.25), 0 2px 8px rgba(0,85,255,0.15)'
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.color = '#00b3ff';
-                    e.currentTarget.style.boxShadow = '0 0 0 1.5px rgba(0,179,255,0.7), 0 0 16px rgba(0,179,255,0.35), 0 2px 8px rgba(0,85,255,0.25)';
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.color = '#e2e8f0';
-                    e.currentTarget.style.boxShadow = '0 0 0 1px rgba(0,179,255,0.25), 0 2px 8px rgba(0,85,255,0.15)';
-                  }}
+                  className="w-full py-2.5 px-4 rounded-xl font-semibold text-xs sm:text-sm text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700/70 transition-all flex items-center justify-center gap-2"
                 >
-                  <span>Quero um projeto similar</span>
-                  <ArrowUpRight size={15} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                  <i className="ph ph-envelope-simple text-base"></i>
+                  <span>Solicitar orçamento</span>
                 </a>
               </div>
             </div>

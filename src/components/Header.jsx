@@ -172,27 +172,132 @@ export default function Header() {
           </div>
 
           {/* ─────────────────────────────────────
-              CTA MOBILE (Apenas WhatsApp)
+              CONTROLES MOBILE (Menu Hambúrguer)
           ───────────────────────────────────── */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-3">
+            <button
+              onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-white hover:text-blue-400 p-2 rounded-xl bg-slate-900/60 border border-slate-700/50 backdrop-blur-md transition-colors"
+              aria-label="Abrir Menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ─────────────────────────────────────
+          DRAWER MOBILE NATIVO (Fiel à imagem de referência)
+      ───────────────────────────────────── */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 top-0 z-50 bg-[#020817] flex flex-col p-6 overflow-y-auto animate-in fade-in duration-200">
+          {/* Top Bar inside Menu */}
+          <div className="flex items-center justify-between pb-6 border-b border-slate-800/80">
+            <a href="#" onClick={() => setMobileMenuOpen(false)} className="flex items-center">
+              <img src={logoImg} alt="One Code" className="h-10 w-auto object-contain" />
+            </a>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-slate-400 hover:text-white p-2 rounded-xl bg-slate-900 border border-slate-800 transition-colors"
+              aria-label="Fechar Menu"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          {/* Links com ícones e visual premium */}
+          <nav className="flex flex-col gap-2.5 my-6">
+            <a
+              href="#"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3.5 px-4 py-3 rounded-2xl bg-[#0066FF] text-white font-bold text-base shadow-lg shadow-blue-600/30"
+            >
+              <div className="w-5 h-5 flex items-center justify-center">
+                <i className="ph-fill ph-house text-xl"></i>
+              </div>
+              <span>Início</span>
+            </a>
+
+            <a
+              href="#portfolio"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-slate-300 hover:text-white hover:bg-slate-900/60 font-semibold text-base transition-colors"
+            >
+              <div className="w-5 h-5 flex items-center justify-center text-slate-400">
+                <i className="ph ph-folder text-xl"></i>
+              </div>
+              <span>Projetos</span>
+            </a>
+
+            <a
+              href="#solucoes"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-slate-300 hover:text-white hover:bg-slate-900/60 font-semibold text-base transition-colors"
+            >
+              <div className="w-5 h-5 flex items-center justify-center text-slate-400">
+                <i className="ph ph-squares-four text-xl"></i>
+              </div>
+              <span>Soluções</span>
+            </a>
+
+            <a
+              href="#estrategia"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-slate-300 hover:text-white hover:bg-slate-900/60 font-semibold text-base transition-colors"
+            >
+              <div className="w-5 h-5 flex items-center justify-center text-slate-400">
+                <i className="ph ph-users text-xl"></i>
+              </div>
+              <span>Sobre nós</span>
+            </a>
+
+            <a
+              href="#planos"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-slate-300 hover:text-white hover:bg-slate-900/60 font-semibold text-base transition-colors"
+            >
+              <div className="w-5 h-5 flex items-center justify-center text-slate-400">
+                <i className="ph ph-article text-xl"></i>
+              </div>
+              <span>Planos</span>
+            </a>
+
+            <a
+              href="#briefing"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-slate-300 hover:text-white hover:bg-slate-900/60 font-semibold text-base transition-colors"
+            >
+              <div className="w-5 h-5 flex items-center justify-center text-slate-400">
+                <i className="ph ph-paper-plane-tilt text-xl"></i>
+              </div>
+              <span>Contato</span>
+            </a>
+          </nav>
+
+          {/* CTA Card no rodapé do drawer */}
+          <div className="mt-auto p-5 rounded-2xl bg-linear-to-b from-blue-950/40 to-slate-900/80 border border-blue-500/20 flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+                <i className="ph-fill ph-rocket-launch text-2xl"></i>
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white leading-snug">Vamos transformar seu projeto em realidade?</p>
+              </div>
+            </div>
+
             <a
               href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20meu%20site%2Fsistema."
               target="_blank"
               rel="noreferrer"
-              className="
-                flex items-center gap-1.5
-                px-4 py-2.5
-                rounded-full
-                font-bold text-[13px] text-white
-                bg-linear-to-r from-blue-600 to-blue-500
-                shadow-[0_0_15px_rgba(0,110,255,0.20)]
-              "
+              className="w-full py-3 px-4 rounded-xl bg-[#0066FF] hover:bg-blue-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30 transition-colors"
             >
-              WHATSAPP
+              <i className="ph-bold ph-whatsapp-logo text-lg"></i>
+              <span>Falar no WhatsApp</span>
+              <ArrowRight size={16} />
             </a>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }
