@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Imóveis Prime - Lançamento Jardins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        alpha: {
+                            dark: '#011c26', // Very dark blue/green
+                            teal: '#005b5c', // Medium teal
+                            primary: '#00e5a3', // Bright vibrant green/teal for accents
+                            gradientStart: '#004d4f',
+                            gradientEnd: '#001a1c'
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('/alpha-hero.jpg')",
+                        'dots-pattern': 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .bg-dots {
+            background-size: 20px 20px;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+        }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Custom gradient for sections */
+        .bg-alpha-gradient {
+            background: linear-gradient(135deg, #004d4f 0%, #011c26 100%);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(90deg, rgba(1,28,38,0.95) 0%, rgba(0,91,92,0.8) 40%, rgba(0,0,0,0) 100%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-alpha-dark/95 backdrop-blur-sm border-b border-white/10 transition-all duration-300">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="text-alpha-primary">
+                        <!-- Custom Abstract 'A' Logo -->
+                        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 0L40 40H26.6667L20 26.6667L13.3333 40H0L20 0Z" fill="currentColor"/>
+                            <path d="M20 26.6667L26.6667 40H13.3333L20 26.6667Z" fill="#00a374"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-bold text-xl text-white tracking-widest block leading-none">ALPHA</span>
+                        <span class="text-[0.6rem] text-alpha-primary font-semibold tracking-[0.2em] uppercase">Imóveis Prime</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-10">
+                    <a href="#" class="text-white text-sm font-medium border-b-2 border-alpha-primary pb-1">Início</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">O Empreendimento</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">Plantas</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">Diferenciais</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">Galeria</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">Localização</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <!-- Decorate dots pattern next to button -->
+                    <div class="hidden xl:flex gap-1">
+                        <div class="w-1 h-1 bg-white/20 rounded-full"></div>
+                        <div class="w-1 h-1 bg-white/20 rounded-full"></div>
+                        <div class="w-1 h-1 bg-white/20 rounded-full"></div>
+                        <div class="w-1 h-1 bg-white/40 rounded-full"></div>
+                        <div class="w-1 h-1 bg-white/60 rounded-full"></div>
+                    </div>
+                    <button class="bg-alpha-primary hover:bg-emerald-400 text-alpha-dark px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(0,229,163,0.3)] hover:shadow-[0_0_20px_rgba(0,229,163,0.5)]">
+                        Receber Apresentação
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center">
+                    <button class="text-white hover:text-alpha-primary">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-alpha-dark">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="/alpha-hero.jpg" alt="Fachada Empreendimento Jardins" class="w-full h-full object-cover object-right lg:object-center" />
+            <!-- Complex Overlay -->
+            <div class="absolute inset-0 hero-overlay z-10"></div>
+            <!-- Decorative dots left -->
+            <div class="absolute left-0 top-0 w-64 h-full bg-dots z-10 opacity-20"></div>
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Hero Content Left -->
+                <div class="text-white space-y-6 pt-10 pb-20 lg:py-0">
+                    <div class="flex items-center gap-4">
+                        <div class="h-px w-8 bg-alpha-primary"></div>
+                        <span class="text-alpha-primary text-xs font-bold tracking-[0.2em] uppercase">Exclusividade em cada detalhe</span>
+                        <div class="h-px w-8 bg-alpha-primary"></div>
+                    </div>
+                    
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight">
+                        Lançamento<br/>
+                        <span class="text-alpha-primary">Jardins</span>
+                    </h1>
+                    
+                    <p class="text-xl lg:text-2xl font-light text-gray-200">
+                        Apartamentos exclusivos de 3 e 4 suítes.
+                    </p>
+                    
+                    <p class="text-sm lg:text-base text-gray-400 max-w-md leading-relaxed font-light">
+                        O equilíbrio perfeito entre sofisticação, conforto e localização privilegiada. Um novo conceito de viver bem.
+                    </p>
+                    
+                    <div class="pt-4">
+                        <button class="bg-alpha-primary hover:bg-emerald-400 text-alpha-dark px-8 py-4 rounded-full text-sm font-bold flex items-center justify-center gap-3 transition-all shadow-[0_0_20px_rgba(0,229,163,0.2)] hover:shadow-[0_0_30px_rgba(0,229,163,0.4)] w-full sm:w-auto">
+                            Receber Apresentação
+                            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="flex flex-wrap gap-x-8 gap-y-4 pt-8 border-t border-white/10 mt-8">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-alpha-primary"></i>
+                            <span class="text-xs text-gray-300 font-medium">Localização<br/>privilegiada</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="gem" class="w-5 h-5 text-alpha-primary"></i>
+                            <span class="text-xs text-gray-300 font-medium">Alto padrão<br/>de acabamento</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-alpha-primary"></i>
+                            <span class="text-xs text-gray-300 font-medium">Segurança<br/>e tecnologia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Content (Floating Text) -->
+                <div class="hidden lg:flex justify-end items-start h-full pt-20">
+                    <div class="text-right space-y-2 opacity-80 border-r-2 border-alpha-primary pr-4">
+                        <p class="text-xs text-white font-medium tracking-[0.3em] uppercase">Viva o</p>
+                        <p class="text-xs text-white font-medium tracking-[0.3em] uppercase">Extraordinário</p>
+                        <p class="text-xs text-white font-medium tracking-[0.3em] uppercase">No Jardins</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Two Column Section: Diferenciais & Numbers -->
+    <section class="bg-white">
+        <div class="flex flex-col lg:flex-row w-full">
+            
+            <!-- Left Side: Diferenciais -->
+            <div class="w-full lg:w-3/5 p-8 lg:p-16 xl:p-24 flex flex-col justify-center">
+                <div class="max-w-2xl mx-auto lg:ml-auto w-full">
+                    <p class="text-alpha-teal text-xs font-bold tracking-[0.2em] uppercase mb-3">Diferenciais</p>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+                        Mais do que um endereço,<br/>
+                        <span class="text-alpha-teal">um estilo de vida.</span>
+                    </h2>
+                    <p class="text-slate-500 text-sm md:text-base leading-relaxed mb-12 max-w-lg">
+                        O Jardins foi planejado para quem valoriza qualidade de vida, bem-estar e exclusividade. Aqui, cada detalhe faz a diferença.
+                    </p>
+
+                    <!-- Icons Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Icon 1 -->
+                        <div>
+                            <div class="w-12 h-12 mb-4 text-alpha-teal">
+                                <i data-lucide="tree-pine" class="w-10 h-10" stroke-width="1.5"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-sm mb-2">Áreas de lazer<br/>completas</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">Piscina, academia, salão de festas e muito mais.</p>
+                        </div>
+                        <!-- Icon 2 -->
+                        <div>
+                            <div class="w-12 h-12 mb-4 text-alpha-teal">
+                                <i data-lucide="shield" class="w-10 h-10" stroke-width="1.5"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-sm mb-2">Segurança 24h<br/>&nbsp;</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">Portaria, controle de acesso e monitoramento.</p>
+                        </div>
+                        <!-- Icon 3 -->
+                        <div>
+                            <div class="w-12 h-12 mb-4 text-alpha-teal">
+                                <i data-lucide="map-pin" class="w-10 h-10" stroke-width="1.5"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-sm mb-2">Localização nobre<br/>&nbsp;</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">Próximo a tudo o que você precisa.</p>
+                        </div>
+                        <!-- Icon 4 -->
+                        <div>
+                            <div class="w-12 h-12 mb-4 text-alpha-teal">
+                                <i data-lucide="star" class="w-10 h-10" stroke-width="1.5"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-sm mb-2">Arquitetura moderna<br/>&nbsp;</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">Design contemporâneo e alto padrão.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Numbers Box -->
+            <div class="w-full lg:w-2/5 p-8 lg:p-16 xl:p-24 bg-alpha-gradient text-white flex flex-col justify-center relative overflow-hidden">
+                 <!-- Background accent -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-alpha-primary/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10 w-full max-w-md mx-auto lg:mr-auto lg:ml-0">
+                    <div class="flex items-center gap-3 mb-10">
+                        <span class="text-alpha-primary text-xs font-bold tracking-[0.1em] uppercase">Números que impressionam</span>
+                        <div class="h-px w-12 bg-white/20"></div>
+                    </div>
+
+                    <div class="space-y-10">
+                        <!-- Stat row 1 -->
+                        <div class="grid grid-cols-2 gap-8 border-b border-white/10 pb-10">
+                            <div>
+                                <p class="text-5xl font-extrabold mb-1">98%</p>
+                                <p class="text-sm text-gray-400 font-medium mb-3">Unidades vendidas</p>
+                                <i data-lucide="bar-chart-2" class="w-5 h-5 text-alpha-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-5xl font-extrabold mb-1">+500</p>
+                                <p class="text-sm text-gray-400 font-medium mb-3">Famílias realizadas</p>
+                                <i data-lucide="users" class="w-5 h-5 text-alpha-primary"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Stat row 2 -->
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="col-span-2">
+                                <p class="text-4xl font-extrabold mb-1">4,9/5</p>
+                                <p class="text-sm text-gray-400 font-medium mb-3">Satisfação dos clientes</p>
+                                <div class="flex gap-1 text-alpha-primary mb-6">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                                <blockquote class="border-l-2 border-alpha-primary pl-4">
+                                    <p class="text-sm italic text-gray-300 leading-relaxed mb-2">
+                                        "Um empreendimento que superou todas as nossas expectativas. Qualidade, localização e atendimento impecáveis!"
+                                    </p>
+                                    <footer class="text-xs text-alpha-primary font-medium">— Cliente Alpha</footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Two Column Section: Apartamentos & Galeria -->
+    <section class="bg-[#f8fafc] border-t border-gray-200">
+        <div class="flex flex-col lg:flex-row w-full">
+            
+            <!-- Left Side: Apartamentos -->
+            <div class="w-full lg:w-1/2 p-8 lg:p-16 xl:p-24 flex flex-col justify-center border-r border-gray-200">
+                <div class="max-w-xl mx-auto lg:ml-auto w-full">
+                    <p class="text-alpha-teal text-xs font-bold tracking-[0.2em] uppercase mb-2">Apartamentos</p>
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
+                        3 e 4 suítes<br/>
+                        <span class="text-alpha-teal font-light">de puro conforto.</span>
+                    </h2>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-8 max-w-md">
+                        Plantas inteligentes, espaços amplos e acabamentos sofisticados. Escolha o apartamento ideal para o seu momento.
+                    </p>
+                    
+                    <button class="bg-alpha-dark hover:bg-slate-800 text-white px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2 transition-colors mb-12 w-fit">
+                        Ver plantas e metragens
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-alpha-primary"></i>
+                    </button>
+
+                    <!-- Property Cards Container -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Card 1 -->
+                        <div class="group relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sala 3 suítes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-alpha-dark/90 via-alpha-dark/40 to-transparent"></div>
+                            
+                            <!-- Content -->
+                            <div class="absolute bottom-0 left-0 w-full p-5 text-white">
+                                <h3 class="text-xl font-bold mb-1">3 Suítes</h3>
+                                <p class="text-xs text-gray-300 mb-3">A partir de 142 m²</p>
+                                <div class="flex items-center gap-4 text-[10px] font-medium text-alpha-primary uppercase tracking-wider">
+                                    <div class="flex items-center gap-1.5"><i data-lucide="bed" class="w-3.5 h-3.5"></i> 3 suítes</div>
+                                    <div class="flex items-center gap-1.5"><i data-lucide="car" class="w-3.5 h-3.5"></i> 3 vagas</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="group relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Quarto 4 suítes" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-alpha-dark/90 via-alpha-dark/40 to-transparent"></div>
+                            
+                            <!-- Content -->
+                            <div class="absolute bottom-0 left-0 w-full p-5 text-white">
+                                <h3 class="text-xl font-bold mb-1">4 Suítes</h3>
+                                <p class="text-xs text-gray-300 mb-3">A partir de 186 m²</p>
+                                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] font-medium text-alpha-primary uppercase tracking-wider">
+                                    <div class="flex items-center gap-1.5"><i data-lucide="bed" class="w-3.5 h-3.5"></i> 4 suítes</div>
+                                    <div class="flex items-center gap-1.5"><i data-lucide="car" class="w-3.5 h-3.5"></i> 4 vagas</div>
+                                    <div class="flex items-center gap-1.5 w-full"><i data-lucide="sun" class="w-3.5 h-3.5"></i> Varanda gourmet</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Galeria -->
+            <div class="w-full lg:w-1/2 p-8 lg:p-16 xl:p-24 flex flex-col justify-center bg-white relative">
+                <div class="max-w-xl mx-auto lg:ml-0 lg:mr-auto w-full">
+                    <p class="text-alpha-teal text-xs font-bold tracking-[0.2em] uppercase mb-2">Galeria</p>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-8 leading-tight">
+                        Conheça cada<br/>detalhe do <span class="text-alpha-teal">Jardins</span>
+                    </h2>
+
+                    <!-- Bento Grid Gallery -->
+                    <div class="relative w-full aspect-square md:aspect-video lg:aspect-square grid grid-cols-2 grid-rows-2 gap-2 md:gap-4">
+                        
+                        <!-- Top Left Image -->
+                        <div class="rounded-xl md:rounded-2xl overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Piscina exterior" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                        </div>
+
+                        <!-- Top Right Image -->
+                        <div class="rounded-xl md:rounded-2xl overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Living amplo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                        </div>
+
+                        <!-- Bottom Left Image -->
+                        <div class="rounded-xl md:rounded-2xl overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Academia" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                        </div>
+
+                        <!-- Bottom Right Image -->
+                        <div class="rounded-xl md:rounded-2xl overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Piscina interior" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                        </div>
+
+                        <!-- Center Play Button Overlay -->
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <button class="pointer-events-auto bg-alpha-primary w-16 h-16 rounded-full flex items-center justify-center text-alpha-dark shadow-[0_0_20px_rgba(0,229,163,0.4)] hover:scale-110 transition-transform hover:bg-emerald-400">
+                                <i data-lucide="play" class="w-6 h-6 fill-current ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Marketing / Funnel Flow Section (Dark) -->
+    <section class="bg-[#00171f] text-white py-16 relative overflow-hidden border-t border-white/5">
+        <!-- Dot Pattern Background -->
+        <div class="absolute inset-0 bg-dots opacity-10"></div>
+        
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col xl:flex-row items-center gap-12 xl:gap-8">
+                
+                <!-- Left Title -->
+                <div class="xl:w-1/3 flex-shrink-0 text-center xl:text-left">
+                    <p class="text-alpha-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-2">Campanha de Marketing & Funil</p>
+                    <h2 class="text-3xl font-bold mb-3 leading-tight">
+                        Do clique à visita.<br/>
+                        <span class="text-alpha-primary">Tudo pensado para você.</span>
+                    </h2>
+                    <p class="text-xs text-gray-400 max-w-sm mx-auto xl:mx-0 leading-relaxed">
+                        Utilizamos as melhores estratégias digitais para atrair, engajar e converter o seu interesse em uma visita.
+                    </p>
+                </div>
+
+                <!-- Right Flowchart -->
+                <div class="xl:w-2/3 w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-2">
+                    
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center xl:items-start text-center xl:text-left w-full md:w-auto relative">
+                        <div class="w-10 h-10 mb-3 text-blue-400 flex items-center justify-center">
+                            <!-- Generic Ads Icon -->
+                            <i data-lucide="mouse-pointer-click" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mb-1">Google Ads</h4>
+                        <p class="text-[10px] text-gray-500 max-w-[120px] leading-tight">Anúncios segmentados para o público certo.</p>
+                        <!-- Arrow indicator -->
+                        <div class="hidden md:block absolute top-5 -right-6 lg:-right-10 w-8 lg:w-16 h-px bg-gradient-to-r from-alpha-primary/50 to-transparent"></div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center xl:items-start text-center xl:text-left w-full md:w-auto relative">
+                        <div class="w-10 h-10 mb-3 text-blue-500 flex items-center justify-center">
+                           <i data-lucide="share-2" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mb-1">Meta Ads</h4>
+                        <p class="text-[10px] text-gray-500 max-w-[120px] leading-tight">Maior alcance e engajamento.</p>
+                         <!-- Arrow indicator -->
+                        <div class="hidden md:block absolute top-5 -right-6 lg:-right-10 w-8 lg:w-16 h-px bg-gradient-to-r from-alpha-primary/50 to-transparent"></div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center xl:items-start text-center xl:text-left w-full md:w-auto relative">
+                        <div class="w-10 h-10 mb-3 text-alpha-primary flex items-center justify-center">
+                            <i data-lucide="layout-template" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mb-1">Página de Vendas</h4>
+                        <p class="text-[10px] text-gray-500 max-w-[120px] leading-tight">Experiência completa e segura.</p>
+                         <!-- Arrow indicator -->
+                        <div class="hidden md:block absolute top-5 -right-6 lg:-right-10 w-8 lg:w-16 h-px bg-gradient-to-r from-alpha-primary/50 to-transparent"></div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex flex-col items-center xl:items-start text-center xl:text-left w-full md:w-auto">
+                        <div class="w-10 h-10 mb-3 text-gray-300 flex items-center justify-center">
+                            <i data-lucide="database" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-sm font-bold mb-1">CRM Integrado</h4>
+                        <p class="text-[10px] text-gray-500 max-w-[120px] leading-tight">Acompanhamento em tempo real.</p>
+                    </div>
+
+                    <!-- Final Result Box -->
+                    <div class="mt-8 md:mt-0 bg-alpha-teal/20 border border-alpha-teal/30 rounded-xl p-4 flex items-center gap-4 min-w-[240px]">
+                        <div class="w-10 h-10 bg-alpha-primary/10 rounded-lg flex items-center justify-center text-alpha-primary flex-shrink-0">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white mb-1 leading-tight">Mais visibilidade.<br/>Mais leads. Mais vendas.</h4>
+                            <p class="text-[9px] text-gray-400">Tecnologia e estratégia trabalhando<br/>juntas para o seu futuro.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA Banner -->
+    <footer class="bg-alpha-gradient relative border-t-4 border-alpha-primary overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute left-0 top-0 h-full w-1/3 opacity-30 mix-blend-overlay pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1508873699372-7aeab60b44ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Folhas palmeira" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute right-0 top-0 h-full w-full bg-dots opacity-5 pointer-events-none"></div>
+
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-10 lg:py-12">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                
+                <!-- Logo & Brand Bottom -->
+                <div class="flex items-center gap-4 lg:w-1/4 lg:border-r border-white/10 lg:pr-8">
+                    <div class="text-alpha-primary opacity-80">
+                        <!-- Abstract 'A' Logo duplicated -->
+                        <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 0L40 40H26.6667L20 26.6667L13.3333 40H0L20 0Z" fill="currentColor"/>
+                            <path d="M20 26.6667L26.6667 40H13.3333L20 26.6667Z" fill="#00a374"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-bold text-xl text-white tracking-widest block leading-none">ALPHA</span>
+                        <span class="text-[0.6rem] text-alpha-primary font-semibold tracking-[0.2em] uppercase">Imóveis Prime</span>
+                    </div>
+                </div>
+
+                <!-- Center CTA Text & Button -->
+                <div class="lg:w-1/2 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left px-0 lg:px-8">
+                    <div>
+                        <p class="text-alpha-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-1">Lançamento Jardins</p>
+                        <h2 class="text-2xl font-bold text-white mb-1">Seu novo capítulo começa aqui.</h2>
+                        <p class="text-xs text-gray-400">Cadastre-se e receba a apresentação completa do empreendimento.</p>
+                    </div>
+                    
+                    <button class="bg-white hover:bg-gray-100 text-alpha-teal px-6 py-3 rounded-full text-sm font-bold flex items-center justify-center gap-2 transition-colors flex-shrink-0 w-full md:w-auto shadow-lg">
+                        Receber Apresentação
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Right Info List -->
+                <div class="lg:w-1/4 flex flex-col justify-center space-y-3 lg:border-l border-white/10 lg:pl-8">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="user" class="w-4 h-4 text-alpha-primary"></i>
+                        <span class="text-[11px] text-gray-300">Atendimento personalizado</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="image" class="w-4 h-4 text-alpha-primary"></i>
+                        <span class="text-[11px] text-gray-300">Material completo do projeto</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="percent" class="w-4 h-4 text-alpha-primary"></i>
+                        <span class="text-[11px] text-gray-300">Condições especiais de lançamento</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Simple Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-lg', 'bg-alpha-dark');
+                nav.classList.remove('bg-alpha-dark/95', 'border-b', 'border-white/10');
+            } else {
+                nav.classList.remove('shadow-lg', 'bg-alpha-dark');
+                nav.classList.add('bg-alpha-dark/95', 'border-b', 'border-white/10');
+            }
+        });
+    </script>
+</body>
+</html>

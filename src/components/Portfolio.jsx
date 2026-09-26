@@ -90,14 +90,20 @@ const PROJECTS = [
     tagline: 'Estratégia completa de anúncios no Google e Meta Ads para empreendimentos de alto padrão.',
     metric: '3.4x de Retorno sobre Investimento (ROAS)',
     tags: ['Google Ads', 'Meta Ads', 'Página de Vendas', 'CRM Integrado'],
-    accentColor: 'from-emerald-600 to-teal-500',
+    accentColor: 'from-emerald-700 via-teal-800 to-slate-950',
+    url: '/alpha_imoveis_landing_page.html',
+    urlCta: 'Ver Landing Page no Ar',
+    btnColor: 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-600/20',
+    isLive: true,
+    previewImg: '/alpha-hero.jpg',
     mockupType: 'campaign',
     preview: {
       headline: 'Lançamento Jardins',
       sub: 'Apartamentos exclusivos de 3 e 4 suítes.',
-      cta: 'Receber Apresentação',
+      cta: 'Ver no Ar',
       stats: '48 cotas reservadas',
-      badge: 'Alta Performance'
+      badge: 'Case Real • No Ar',
+      domain: 'alphaimoveisprime.com.br'
     }
   },
   {
@@ -116,7 +122,7 @@ const PROJECTS = [
     previewImg: '/solartech.png',
     mockupType: 'browser',
     preview: {
-      headline: 'Economize até 95% na luz',
+      headline: 'Economize até 80% na luz',
       sub: 'Simule sua economia em menos de 1 minuto.',
       cta: 'Ver no Ar',
       stats: 'R$ 1.8M economizados',
@@ -171,12 +177,12 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="py-20 sm:py-28 relative overflow-hidden bg-transparent">
-      
+
       {/* Glow decorativo sutil */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-175 rounded-full bg-blue-500/5 blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10">
-        
+
         {/* Cabeçalho */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
@@ -201,11 +207,10 @@ export default function Portfolio() {
               <button
                 key={cat.id}
                 onClick={() => setActiveFilter(cat.id)}
-                className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 ${
-                  isSelected
+                className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 ${isSelected
                     ? 'bg-slate-950 text-white shadow-md shadow-slate-950/20 scale-[1.02]'
                     : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/90 hover:border-slate-300 hover:bg-slate-50'
-                }`}
+                  }`}
               >
                 {cat.label}
               </button>
@@ -236,7 +241,7 @@ export default function Portfolio() {
                   ) : (
                     <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[16px_16px]" />
                   )}
-                  
+
                   {/* Barra de título do browser simulado */}
                   <div className="relative z-10 flex items-center justify-between">
                     <div className="flex items-center gap-1.5">
@@ -336,11 +341,10 @@ export default function Portfolio() {
                   </p>
 
                   {/* Destaque de Métrica / Resultado */}
-                  <div className={`mb-5 p-3 rounded-xl border flex items-center gap-2.5 ${
-                    project.isLive
+                  <div className={`mb-5 p-3 rounded-xl border flex items-center gap-2.5 ${project.isLive
                       ? 'bg-emerald-50/80 border-emerald-200/80 text-emerald-950'
                       : 'bg-blue-50/70 border-blue-100 text-blue-950'
-                  }`}>
+                    }`}>
                     <CheckCircle size={16} className={`shrink-0 ${project.isLive ? 'text-emerald-600' : 'text-blue-600'}`} strokeWidth={2.5} />
                     <span className="text-xs font-bold">
                       {project.metric}
@@ -368,9 +372,8 @@ export default function Portfolio() {
                     href={project.url}
                     target="_blank"
                     rel="noreferrer"
-                    className={`w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-md active:scale-[0.98] group/live ${
-                      project.btnColor || 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/20'
-                    }`}
+                    className={`w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-md active:scale-[0.98] group/live ${project.btnColor || 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/20'
+                      }`}
                   >
                     <span>{project.urlCta || 'Acessar Projeto Online'}</span>
                     <ExternalLink size={15} className="group-hover/live:translate-x-0.5 group-hover/live:-translate-y-0.5 transition-transform" />
