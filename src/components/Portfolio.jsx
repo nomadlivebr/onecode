@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, ArrowUpRight, Sparkles, Layers, TrendingUp, Monitor, CheckCircle } from 'lucide-react';
+import { ExternalLink, ArrowUpRight, ArrowRight, Sparkles, Layers, TrendingUp, Monitor, CheckCircle } from 'lucide-react';
 
 const CATEGORIES = [
   { id: 'all', label: 'Todos os Projetos' },
