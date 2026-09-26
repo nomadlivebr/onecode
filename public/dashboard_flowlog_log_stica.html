@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowLog Logística - Dashboard</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B172A', // Sidebar background
+                            blue: '#1d4ed8', // Active items, primary blue
+                            light: '#f3f4f6', // Main background
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Donut Chart CSS */
+        .donut-chart {
+            background: conic-gradient(#10b981 0% 25%,
+                    /* Green - Concluídas */
+                    #2563eb 25% 96%,
+                    /* Blue - Em andamento */
+                    #ef4444 96% 100%
+                    /* Red - Atrasadas */
+                );
+        }
+
+        /* Map Background Pattern */
+        .bg-map-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-slate-800 bg-slate-50 h-screen flex overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-[#0B172A] text-slate-300 flex flex-col shrink-0 h-full relative z-20">
+        <!-- Logo -->
+        <div class="h-20 flex items-center px-6 gap-3 border-b border-slate-700/50">
+            <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-white">
+                <i class="ph-bold ph-package text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-white font-bold text-lg leading-tight">FlowLog</h1>
+                <p class="text-xs text-slate-400 font-medium">Logística</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1">
+            <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 bg-blue-600 text-white rounded-lg font-medium transition-colors">
+                <i class="ph-fill ph-house text-xl"></i>
+                Início
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 hover:text-white rounded-lg font-medium transition-colors">
+                <i class="ph-fill ph-truck text-xl"></i>
+                Entregas
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 hover:text-white rounded-lg font-medium transition-colors">
+                <i class="ph-fill ph-box-arrow-down text-xl"></i>
+                Coletas
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 hover:text-white rounded-lg font-medium transition-colors">
+                <i class="ph-fill ph-map-trifold text-xl"></i>
+                Rotas
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 hover:text-white rounded-lg font-medium transition-colors">
+                <i class="ph-fill ph-user-circle text-xl"></i>
+                Motoristas
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 hover:text-white rounded-lg font-medium transition-colors">
+                <i class="ph-fill ph-file-text text-xl"></i>
+                Relatórios
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 hover:bg-slate-800/50 hover:text-white rounded-lg font-medium transition-colors mt-4">
+                <i class="ph-fill ph-gear text-xl"></i>
+                Configurações
+            </a>
+        </nav>
+
+        <!-- System Status -->
+        <div class="p-6 border-t border-slate-700/50 relative overflow-hidden">
+            <!-- Decorative curves -->
+            <div class="absolute bottom-0 left-0 w-full h-full opacity-20 pointer-events-none">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="w-full h-full stroke-blue-500 fill-none"
+                    stroke-width="1">
+                    <path d="M0,100 C30,80 50,120 100,50" />
+                    <path d="M0,120 C40,90 60,110 100,70" />
+                </svg>
+            </div>
+
+            <div class="relative z-10 flex items-center gap-2 mb-1">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                </span>
+                <span class="text-sm font-medium text-green-500">Sistema Online</span>
+            </div>
+            <div class="relative z-10 text-xs text-slate-500">
+                Última atualização<br>
+                26/09/2026 10:42
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full relative w-full">
+
+        <!-- Top Bar -->
+        <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 shrink-0">
+            <!-- Search -->
+            <div class="relative w-96">
+                <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"></i>
+                <input type="text" placeholder="Buscar por pedido, nota fiscal, motorista..."
+                    class="w-full bg-slate-100/80 text-sm border-none rounded-full py-2.5 pl-10 pr-4 focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all placeholder:text-slate-400">
+            </div>
+
+            <!-- Profile & Notifications -->
+            <div class="flex items-center gap-6">
+                <button class="relative text-slate-500 hover:text-blue-600 transition-colors">
+                    <i class="ph-fill ph-bell text-2xl"></i>
+                    <span
+                        class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-white">3</span>
+                </button>
+                <div class="flex items-center gap-3 cursor-pointer">
+                    <div
+                        class="w-9 h-9 rounded-full bg-[#0B172A] text-white flex items-center justify-center font-semibold text-sm">
+                        TB
+                    </div>
+                    <span class="font-medium text-sm text-slate-700">Admin</span>
+                    <i class="ph-bold ph-caret-down text-slate-400 text-xs"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Scrollable Dashboard Area -->
+        <div class="flex-1 overflow-y-auto p-8 space-y-6">
+
+            <!-- Hero Banner -->
+            <div class="bg-linear-to-r from-blue-700 to-blue-500 rounded-2xl p-8 relative overflow-hidden shadow-sm">
+                <!-- Abstract Map/Dots Background -->
+                <div class="absolute right-0 top-0 w-1/2 h-full opacity-30 pointer-events-none">
+                    <svg viewBox="0 0 400 200" class="w-full h-full fill-white/20 stroke-white">
+                        <path d="M50,150 L120,100 L200,120 L280,60 L350,90" fill="none" stroke-width="2"
+                            stroke-dasharray="4 4" />
+                        <circle cx="50" cy="150" r="4" class="fill-white" />
+                        <circle cx="120" cy="100" r="4" class="fill-white" />
+                        <circle cx="200" cy="120" r="4" class="fill-white" />
+                        <circle cx="280" cy="60" r="6" class="fill-white" />
+                        <path d="M280,60 C300,30 320,10 350,20" fill="none" stroke-width="2" stroke-dasharray="4 4" />
+                        <circle cx="350" cy="90" r="4" class="fill-white" />
+                    </svg>
+                </div>
+
+                <div class="relative z-10 flex justify-between items-start">
+                    <div>
+                        <p class="text-blue-100 font-medium text-sm tracking-wide uppercase mb-1">Bem-vindo ao</p>
+                        <h2 class="text-3xl font-bold text-white mb-2">Painel de Logística</h2>
+                        <p class="text-blue-100 text-sm max-w-md">
+                            Acompanhe em tempo real o status das entregas, coletas e toda a operação logística da sua
+                            empresa.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                        <i class="ph-fill ph-cloud text-sm"></i>
+                        PAINEL EM NUVEM
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm flex flex-col justify-between h-32">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                            <i class="ph-fill ph-truck text-xl"></i>
+                        </div>
+                        <span class="text-slate-500 text-sm font-medium">Entregas no prazo</span>
+                    </div>
+                    <div class="flex items-end justify-between mt-2">
+                        <div class="text-3xl font-bold text-slate-800">99,9%</div>
+                        <div class="text-green-500 text-xs font-semibold flex items-center gap-0.5">
+                            <i class="ph-bold ph-arrow-up-right"></i> +0,3% <span class="text-slate-400 font-normal">vs.
+                                ontem</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm flex flex-col justify-between h-32">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-green-50 text-green-500 flex items-center justify-center">
+                            <i class="ph-fill ph-package text-xl"></i>
+                        </div>
+                        <span class="text-slate-500 text-sm font-medium">Entregas em andamento</span>
+                    </div>
+                    <div class="flex items-end justify-between mt-2">
+                        <div class="text-3xl font-bold text-slate-800">48</div>
+                        <div class="text-green-500 text-xs font-semibold flex items-center gap-0.5">
+                            <i class="ph-bold ph-arrow-up-right"></i> +12% <span class="text-slate-400 font-normal">vs.
+                                ontem</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm flex flex-col justify-between h-32">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center">
+                            <i class="ph-fill ph-clock text-xl"></i>
+                        </div>
+                        <span class="text-slate-500 text-sm font-medium">Entregas em atraso</span>
+                    </div>
+                    <div class="flex items-end justify-between mt-2">
+                        <div class="text-3xl font-bold text-slate-800">3</div>
+                        <div class="text-green-500 text-xs font-semibold flex items-center gap-0.5">
+                            <i class="ph-bold ph-arrow-down-right"></i> -50% <span
+                                class="text-slate-400 font-normal">vs. ontem</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm flex flex-col justify-between h-32">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-purple-50 text-purple-500 flex items-center justify-center">
+                            <i class="ph-fill ph-git-merge text-xl"></i>
+                        </div>
+                        <span class="text-slate-500 text-sm font-medium">Rotas ativas</span>
+                    </div>
+                    <div class="flex items-end justify-between mt-2">
+                        <div class="text-3xl font-bold text-slate-800">12</div>
+                        <div class="text-green-500 text-xs font-semibold flex items-center gap-0.5">
+                            <i class="ph-bold ph-arrow-up-right"></i> +2 <span class="text-slate-400 font-normal">vs.
+                                ontem</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Section (Map + Timeline) -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <!-- Map Card -->
+                <div class="lg:col-span-2 bg-white rounded-xl border border-slate-100 shadow-sm flex flex-col">
+                    <div class="px-6 py-4 border-b border-slate-50 flex justify-between items-center">
+                        <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                            <i class="ph-fill ph-map-pin text-blue-500"></i> Entregas em tempo real
+                        </h3>
+                        <a href="#" class="text-sm text-blue-600 font-medium flex items-center gap-1 hover:underline">
+                            Ver todas as entregas <i class="ph-bold ph-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="flex-1 bg-map-pattern relative min-h-80 overflow-hidden rounded-b-xl p-4">
+                        <!-- Simulated Routes SVG -->
+                        <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 400"
+                            preserveAspectRatio="xMidYMid slice">
+                            <!-- Green Route (Concluída) -->
+                            <path d="M150,150 Q 250,100 350,200 T 400,280" fill="none" stroke="#10b981" stroke-width="4"
+                                stroke-dasharray="6,4" class="opacity-80" />
+                            <!-- Blue Route (Em andamento) -->
+                            <path d="M300,100 Q 450,80 500,250 T 600,220" fill="none" stroke="#3b82f6" stroke-width="4"
+                                class="opacity-80" />
+                            <!-- Orange Route (Coleta) -->
+                            <path d="M200,280 L 450,280 L 520,180" fill="none" stroke="#f59e0b" stroke-width="4"
+                                class="opacity-80" />
+                            <!-- Red Route (Atraso) -->
+                            <path d="M450,280 Q 550,350 650,300" fill="none" stroke="#ef4444" stroke-width="4"
+                                class="opacity-80" />
+                        </svg>
+
+                        <!-- Pins -->
+                        <!-- Concluída -->
+                        <div
+                            class="absolute top-32.5 left-45 bg-white border border-green-200 shadow-md rounded-full px-3 py-1.5 flex items-center gap-2 text-green-600 text-xs font-bold z-10 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="bg-green-500 text-white rounded-full p-1"><i
+                                    class="ph-bold ph-check text-[10px]"></i></div>
+                            Entrega concluída
+                        </div>
+
+                        <!-- Em rota -->
+                        <div
+                            class="absolute top-37.5 left-87.5 bg-white border border-blue-200 shadow-md rounded-full px-3 py-1.5 flex items-center gap-2 text-blue-600 text-xs font-bold z-10 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="bg-blue-500 text-white rounded-full p-1"><i
+                                    class="ph-fill ph-truck text-[10px]"></i></div>
+                            Em rota
+                        </div>
+
+                        <!-- Coleta -->
+                        <div
+                            class="absolute top-40 left-130 bg-white border border-orange-200 shadow-md rounded-full px-3 py-1.5 flex items-center gap-2 text-orange-600 text-xs font-bold z-10 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="bg-orange-500 text-white rounded-full p-1"><i
+                                    class="ph-fill ph-package text-[10px]"></i></div>
+                            Coleta
+                        </div>
+
+                        <!-- Atraso -->
+                        <div
+                            class="absolute top-70 left-157.5 bg-white border border-red-200 shadow-md rounded-full px-3 py-1.5 flex items-center gap-2 text-red-600 text-xs font-bold z-10 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="bg-red-500 text-white rounded-full p-1"><i
+                                    class="ph-bold ph-warning text-[10px]"></i></div>
+                            Atraso
+                        </div>
+
+                        <!-- Mini dots on routes -->
+                        <div
+                            class="absolute top-68.75 left-48.75 w-3 h-3 bg-blue-500 border-2 border-white rounded-full shadow-sm">
+                        </div>
+                        <div
+                            class="absolute top-68.75 left-111.25 w-3 h-3 bg-red-500 border-2 border-white rounded-full shadow-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Card -->
+                <div class="bg-white rounded-xl border border-slate-100 shadow-sm">
+                    <div class="px-6 py-4 border-b border-slate-50 flex justify-between items-center">
+                        <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                            <i class="ph-fill ph-clock-counter-clockwise text-blue-500"></i> Atividade recente
+                        </h3>
+                        <a href="#" class="text-sm text-blue-600 font-medium flex items-center gap-1 hover:underline">
+                            Ver todas <i class="ph-bold ph-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="p-6 space-y-6">
+                        <!-- Item 1 -->
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="ph-fill ph-check-circle text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="text-sm font-bold text-slate-800">Entrega #4587</h4>
+                                    <span class="text-xs text-slate-400">10:32</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mb-2">Cliente: Tech Solutions</p>
+                                <span
+                                    class="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[11px] font-semibold rounded">Concluída</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="ph-fill ph-package text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="text-sm font-bold text-slate-800">Coleta #3261</h4>
+                                    <span class="text-xs text-slate-400">10:18</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mb-2">Cliente: Distribuidora Alfa</p>
+                                <span
+                                    class="inline-block px-2 py-0.5 bg-blue-50 text-blue-600 text-[11px] font-semibold rounded">Em
+                                    andamento</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="ph-fill ph-warning-circle text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="text-sm font-bold text-slate-800">Entrega #4579</h4>
+                                    <span class="text-xs text-slate-400">09:47</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mb-2">Cliente: Hospital Vida</p>
+                                <span
+                                    class="inline-block px-2 py-0.5 bg-red-50 text-red-600 text-[11px] font-semibold rounded">Atrasada</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="ph-fill ph-car text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="text-sm font-bold text-slate-800">Motorista Matheus Silva</h4>
+                                    <span class="text-xs text-slate-400">09:32</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Chegou ao destino</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="ph-fill ph-map-pin text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start mb-1">
+                                    <h4 class="text-sm font-bold text-slate-800">Nova rota criada</h4>
+                                    <span class="text-xs text-slate-400">08:56</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Rota SP-015</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pb-6">
+
+                <!-- Status Donut Chart -->
+                <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-6">
+                    <h3 class="font-bold text-slate-800 flex items-center gap-2 mb-6">
+                        <i class="ph-fill ph-chart-pie text-blue-500"></i> Entregas por status
+                    </h3>
+
+                    <div class="flex items-center justify-center gap-8 mt-4">
+                        <!-- Chart -->
+                        <div
+                            class="relative w-36 h-36 rounded-full donut-chart flex items-center justify-center shadow-inner">
+                            <div
+                                class="w-24 h-24 bg-white rounded-full flex flex-col items-center justify-center shadow-sm">
+                                <span class="text-2xl font-bold text-slate-800 leading-none">124</span>
+                                <span class="text-[10px] text-slate-400 uppercase mt-1 tracking-wide">Total</span>
+                            </div>
+                        </div>
+
+                        <!-- Legend -->
+                        <div class="space-y-3 flex-1">
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                    <span class="text-slate-600 font-medium">Concluídas</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <span class="font-bold text-slate-800">118</span>
+                                    <span class="text-slate-400 w-8 text-right text-xs">95,2%</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+                                    <span class="text-slate-600 font-medium">Em andamento</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <span class="font-bold text-slate-800">48</span>
+                                    <span class="text-slate-400 w-8 text-right text-xs">3,8%</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                    <span class="text-slate-600 font-medium">Atrasadas</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <span class="font-bold text-slate-800">3</span>
+                                    <span class="text-slate-400 w-8 text-right text-xs">1,0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bar Chart -->
+                <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                            <i class="ph-fill ph-chart-bar text-blue-500"></i> Desempenho semanal
+                        </h3>
+                        <div class="flex items-center gap-1.5 text-xs text-slate-500">
+                            <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                            Entregas
+                        </div>
+                    </div>
+
+                    <div class="h-40 flex items-end gap-2 text-xs text-slate-400 pt-4 relative">
+                        <!-- Y Axis Labels -->
+                        <div class="absolute left-0 top-0 h-full flex flex-col justify-between pb-6 pr-2">
+                            <span>150</span>
+                            <span>100</span>
+                            <span>50</span>
+                            <span>0</span>
+                        </div>
+
+                        <!-- Background Grid lines -->
+                        <div class="absolute left-6 right-0 top-1 h-px bg-slate-100"></div>
+                        <div class="absolute left-6 right-0 top-[33%] h-px bg-slate-100"></div>
+                        <div class="absolute left-6 right-0 top-[66%] h-px bg-slate-100"></div>
+                        <div class="absolute left-6 right-0 bottom-6 h-px bg-slate-100"></div>
+
+                        <!-- Bars -->
+                        <div class="flex-1 flex justify-around items-end h-full pl-6 relative z-10 pb-6">
+                            <!-- Seg -->
+                            <div class="flex flex-col items-center gap-2 w-full">
+                                <div class="w-10 bg-blue-500 rounded-t-sm hover:bg-blue-600 transition-colors cursor-pointer relative group"
+                                    style="height: 45%;">
+                                    <div
+                                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        72</div>
+                                </div>
+                                <div class="text-center"><span class="block text-slate-600 font-medium">Seg</span><span
+                                        class="text-[10px]">22/09</span></div>
+                            </div>
+                            <!-- Ter -->
+                            <div class="flex flex-col items-center gap-2 w-full">
+                                <div class="w-10 bg-blue-500 rounded-t-sm hover:bg-blue-600 transition-colors cursor-pointer relative group"
+                                    style="height: 42%;">
+                                    <div
+                                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        68</div>
+                                </div>
+                                <div class="text-center"><span class="block text-slate-600 font-medium">Ter</span><span
+                                        class="text-[10px]">23/09</span></div>
+                            </div>
+                            <!-- Qua -->
+                            <div class="flex flex-col items-center gap-2 w-full">
+                                <div class="w-10 bg-blue-500 rounded-t-sm hover:bg-blue-600 transition-colors cursor-pointer relative group"
+                                    style="height: 55%;">
+                                    <div
+                                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        85</div>
+                                </div>
+                                <div class="text-center"><span class="block text-slate-600 font-medium">Qua</span><span
+                                        class="text-[10px]">24/09</span></div>
+                            </div>
+                            <!-- Qui -->
+                            <div class="flex flex-col items-center gap-2 w-full">
+                                <div class="w-10 bg-blue-500 rounded-t-sm hover:bg-blue-600 transition-colors cursor-pointer relative group"
+                                    style="height: 60%;">
+                                    <div
+                                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        94</div>
+                                </div>
+                                <div class="text-center"><span class="block text-slate-600 font-medium">Qui</span><span
+                                        class="text-[10px]">25/09</span></div>
+                            </div>
+                            <!-- Sex -->
+                            <div class="flex flex-col items-center gap-2 w-full">
+                                <div class="w-10 bg-blue-500 rounded-t-sm hover:bg-blue-600 transition-colors cursor-pointer relative group"
+                                    style="height: 85%;">
+                                    <div
+                                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        128</div>
+                                </div>
+                                <div class="text-center"><span class="block text-slate-600 font-medium">Sex</span><span
+                                        class="text-[10px]">26/09</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Card -->
+                <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-6">
+                    <h3 class="font-bold text-slate-800 flex items-center gap-2 mb-6">
+                        <i class="ph-fill ph-target text-blue-500"></i> Resumo da operação
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-50">
+                            <div class="flex items-center gap-3">
+                                <i class="ph-fill ph-truck text-blue-500 text-lg"></i>
+                                <span class="text-sm text-slate-600 font-medium">Total de entregas hoje</span>
+                            </div>
+                            <span class="font-bold text-slate-800">128</span>
+                        </div>
+
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-50">
+                            <div class="flex items-center gap-3">
+                                <i class="ph-fill ph-package text-blue-500 text-lg"></i>
+                                <span class="text-sm text-slate-600 font-medium">Coletas hoje</span>
+                            </div>
+                            <span class="font-bold text-slate-800">37</span>
+                        </div>
+
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-50">
+                            <div class="flex items-center gap-3">
+                                <i class="ph-fill ph-map-pin text-blue-500 text-lg"></i>
+                                <span class="text-sm text-slate-600 font-medium">Rotas ativas</span>
+                            </div>
+                            <span class="font-bold text-slate-800">12</span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <i class="ph-fill ph-user text-blue-500 text-lg"></i>
+                                <span class="text-sm text-slate-600 font-medium">Motoristas em operação</span>
+                            </div>
+                            <span class="font-bold text-slate-800">15</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

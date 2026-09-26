@@ -3,10 +3,11 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import logoImg from '../assets/OneCodeTecnologia_logo.png';
 
 const NAV_LINKS = [
-  { href: '#servicos', label: 'Serviços' },
-  { href: '#metodo', label: 'O Método' },
-  { href: '#planos', label: 'Planos & Valores' },
-  { href: '#contato', label: 'Contato' },
+  { href: '#solucoes', label: 'Soluções' },
+  { href: '#portfolio', label: 'Portfólio' },
+  { href: '#estrategia', label: 'Estratégia' },
+  { href: '#planos', label: 'Planos' },
+  { href: '#briefing', label: 'Briefing' },
 ];
 
 export default function Header() {
@@ -36,7 +37,7 @@ export default function Header() {
       <div
         className="
           absolute inset-x-0 bottom-0 h-px
-          bg-gradient-to-r
+          bg-linear-to-r
           from-transparent
           via-blue-500/30
           to-transparent
@@ -52,7 +53,7 @@ export default function Header() {
           ───────────────────────────────────── */}
           <a
             href="#"
-            className="flex items-center group flex-shrink-0 relative"
+            className="flex items-center group shrink-0 relative"
             aria-label="One Code Tecnologia — Página inicial"
           >
             <img
@@ -102,9 +103,9 @@ export default function Header() {
                     -bottom-2
                     left-0
                     w-0
-                    h-[2px]
+                    h-0.5
                     rounded-full
-                    bg-gradient-to-r
+                    bg-linear-to-r
                     from-blue-500
                     to-cyan-400
                     transition-all duration-300
@@ -136,7 +137,7 @@ export default function Header() {
                 text-[14px]
                 text-white
 
-                bg-gradient-to-r
+                bg-linear-to-r
                 from-blue-600
                 to-blue-500
 
@@ -150,7 +151,7 @@ export default function Header() {
 
                 hover:shadow-[0_0_35px_rgba(0,140,255,0.35)]
 
-                hover:-translate-y-[1px]
+                hover:-translate-y-px
                 active:scale-[0.97]
 
                 transition-all duration-300
@@ -183,7 +184,7 @@ export default function Header() {
                 px-4 py-2.5
                 rounded-full
                 font-bold text-[13px] text-white
-                bg-gradient-to-r from-blue-600 to-blue-500
+                bg-linear-to-r from-blue-600 to-blue-500
                 shadow-[0_0_15px_rgba(0,110,255,0.20)]
               "
             >

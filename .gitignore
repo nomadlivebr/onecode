@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
+.env*.local
+
+# Windows files
+desktop.ini
+Thumbs.db

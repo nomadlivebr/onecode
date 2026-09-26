@@ -74,7 +74,7 @@ export default function Contact() {
                       type="text" 
                       id="name" 
                       required 
-                      className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:bg-white transition-all duration-300 placeholder-slate-400 shadow-sm hover:border-blue-300 hover:shadow-md" 
+                      className="onecode-input-contact" 
                       placeholder="Ex: João Silva" 
                     />
                   </div>
@@ -83,7 +83,7 @@ export default function Contact() {
                     <input 
                       type="text" 
                       id="empresa" 
-                      className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:bg-white transition-all duration-300 placeholder-slate-400 shadow-sm hover:border-blue-300 hover:shadow-md" 
+                      className="onecode-input-contact" 
                       placeholder="Sua marca ou negócio" 
                     />
                   </div>
@@ -96,7 +96,7 @@ export default function Contact() {
                       type="tel" 
                       id="whatsapp" 
                       required 
-                      className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:bg-white transition-all duration-300 placeholder-slate-400 shadow-sm hover:border-blue-300 hover:shadow-md" 
+                      className="onecode-input-contact" 
                       placeholder="(11) 99999-9999" 
                     />
                   </div>
@@ -106,7 +106,7 @@ export default function Contact() {
                       type="email" 
                       id="email" 
                       required 
-                      className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:bg-white transition-all duration-300 placeholder-slate-400 shadow-sm hover:border-blue-300 hover:shadow-md" 
+                      className="onecode-input-contact" 
                       placeholder="joao@empresa.com.br" 
                     />
                   </div>
@@ -116,7 +116,7 @@ export default function Contact() {
                   <label htmlFor="necessidade" className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Qual o seu interesse principal?</label>
                   <select 
                     id="necessidade" 
-                    className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:bg-white transition-all duration-300 shadow-sm hover:border-blue-300 hover:shadow-md cursor-pointer"
+                    className="onecode-input-contact cursor-pointer"
                   >
                     <option value="site">Criação de Site / Landing Page de Alta Conversão</option>
                     <option value="parceiro">Plano Mensal de Manutenção e Hospedagem</option>
@@ -130,7 +130,7 @@ export default function Contact() {
                   <textarea 
                     id="message" 
                     rows="3" 
-                    className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 focus:bg-white transition-all duration-300 placeholder-slate-400 resize-none shadow-sm hover:border-blue-300 hover:shadow-md" 
+                    className="onecode-input-contact resize-none" 
                     placeholder="Ex: Preciso de um site rápido para atrair clientes para meu consultório / empresa..."
                   ></textarea>
                 </div>

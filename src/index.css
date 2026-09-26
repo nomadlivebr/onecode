@@ -1032,3 +1032,57 @@ button {
   }
 
 }
+
+/* =========================================================
+   FORM CONTROLS (SEM CONFLITO DE LINTER)
+========================================================= */
+
+.onecode-input-contact {
+  width: 100%;
+  background-color: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: #0f172a;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.onecode-input-contact::placeholder {
+  color: #94a3b8;
+}
+
+.onecode-input-contact:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.onecode-input-contact:focus {
+  background-color: #ffffff;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.onecode-input-briefing {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  outline: none;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.onecode-input-briefing::placeholder {
+  color: #94a3b8;
+}
+
+.onecode-input-briefing:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}

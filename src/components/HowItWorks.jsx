@@ -41,7 +41,7 @@ export default function HowItWorks() {
             <div className="space-y-8 relative">
               {steps.map((step, idx) => (
                 <div key={idx} className="flex gap-5 items-start">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-lg font-black text-slate-900">
+                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-lg font-black text-slate-900">
                     {step.number}
                   </div>
                   <div>
@@ -52,8 +52,8 @@ export default function HowItWorks() {
               ))}
 
               {/* Bloco Diferencial Contínuo */}
-              <div className="p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 flex gap-5 items-start">
-                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-600/20">
+              <div className="p-6 rounded-2xl bg-linear-to-r from-blue-50 to-indigo-50 border border-blue-100 flex gap-5 items-start">
+                <div className="shrink-0 w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-600/20">
                   <InfinityIcon size={24} />
                 </div>
                 <div>

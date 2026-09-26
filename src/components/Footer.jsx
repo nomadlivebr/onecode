@@ -31,23 +31,28 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Navegação</h4>
             <ul className="space-y-3 text-sm text-slate-400 font-medium">
               <li>
-                <a href="#servicos" className="hover:text-white transition-colors">
-                  Serviços &amp; Soluções
+                <a href="#solucoes" className="hover:text-white transition-colors">
+                  Soluções
                 </a>
               </li>
               <li>
-                <a href="#metodo" className="hover:text-white transition-colors">
-                  Como Funciona o Método
+                <a href="#portfolio" className="hover:text-white transition-colors">
+                  Portfólio
+                </a>
+              </li>
+              <li>
+                <a href="#estrategia" className="hover:text-white transition-colors">
+                  Estratégia
                 </a>
               </li>
               <li>
                 <a href="#planos" className="hover:text-white transition-colors">
-                  Planos &amp; Preços
+                  Planos &amp; Valores
                 </a>
               </li>
               <li>
-                <a href="#contato" className="hover:text-white transition-colors">
-                  Solicitar Orçamento
+                <a href="#briefing" className="hover:text-white transition-colors">
+                  Briefing do Projeto
                 </a>
               </li>
             </ul>

@@ -4,52 +4,59 @@ import { Check, ArrowRight } from 'lucide-react';
 export default function Pricing() {
   const plans = [
     {
-      name: "Plano Parceiro Mensal",
-      description: "Para empresas que querem o site no ar sem dor de cabeça, incluindo criação, hospedagem em nuvem e suporte contínuo.",
-      price: "197",
-      period: "/mês",
-      highlight: true,
-      tag: "Mais Vantajoso",
-      buttonText: "Assinar Parceria",
-      buttonStyle: "bg-orange-600 hover:bg-orange-700 text-white shadow-md shadow-orange-600/20",
-      features: [
-        "Criação do Site Inclusa (Sem taxa extra)",
-        "Hospedagem Cloud Rápida e Segura",
-        "Manutenção e Backups Diários",
-        "Atualizações e Ajustes Mensais",
-        "Suporte Prioritário via WhatsApp"
-      ]
-    },
-    {
-      name: "Site Profissional",
-      description: "Ideal para negócios que desejam apenas o desenvolvimento do projeto impecável, sem compromisso mensal de parceria.",
+      name: "Presença Digital",
+      badge: "Site / Landing Page",
+      description: "Ideal para empresas que precisam de um site profissional rápido, elegante e pronto para captar contatos no WhatsApp.",
       price: "597",
-      period: "Taxa única",
+      period: "ou a partir de R$ 197/mês",
       highlight: false,
-      buttonText: "Quero Apenas o Site",
+      tag: "Entrada Rápida",
+      buttonText: "Escolher Presença Digital",
       buttonStyle: "bg-slate-900 hover:bg-slate-800 text-white",
       features: [
-        "Landing Page de Alta Conversão",
-        "100% Otimizado para Smartphones",
-        "Botão Flutuante de WhatsApp",
-        "Configuração Inicial de SEO",
-        "Entrega Rápida do Projeto"
+        "Site Institucional ou Landing Page",
+        "Design 100% responsivo para celulares",
+        "Otimização inicial para Google (SEO)",
+        "Botão direto no WhatsApp e formulário",
+        "Hospedagem Cloud rápida e segura"
       ]
     },
     {
-      name: "Sistemas & Enterprise",
-      description: "Desenvolvimento de softwares, portais internos, ERPs e integrações complexas sob medida.",
+      name: "Crescimento",
+      badge: "Site + Marketing",
+      description: "A solução mais procurada: seu site moderno somado a campanhas de tráfego pago para atrair clientes todos os dias.",
+      price: "1.297",
+      period: "/mês",
+      highlight: true,
+      tag: "Mais Estratégico",
+      buttonText: "Acelerar com Crescimento",
+      buttonStyle: "bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/25",
+      features: [
+        "Tudo do plano Presença Digital",
+        "Gestão de Tráfego Pago (Google & Meta Ads)",
+        "Copywriting persuasivo orientado a vendas",
+        "Estruturação de funis de conversão",
+        "Relatórios mensais de contatos e ROI",
+        "Ajustes e melhorias contínuas"
+      ]
+    },
+    {
+      name: "Solução Personalizada",
+      badge: "Site + Sistema + Marketing",
+      description: "Engenharia de software sob medida, automação de rotinas internas e estratégia completa de atração e vendas.",
       price: "Sob Consulta",
       period: "Conforme escopo",
       highlight: false,
-      buttonText: "Agendar Reunião Técnica",
+      tag: "Escala & Automação",
+      buttonText: "Solicitar Proposta Sob Medida",
       buttonStyle: "bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-300",
       features: [
-        "Engenharia de Software Dedicada",
-        "Banco de Dados e APIs Personalizadas",
-        "Dashboards e Painéis Administrativos",
-        "Automações Avançadas de Processos",
-        "SLA de Atendimento Corporativo"
+        "Site / Portal + Sistema Web Exclusivo",
+        "Painel administrativo e dashboards",
+        "Automação de processos operacionais",
+        "Integrações de sistemas e APIs",
+        "Estratégia completa de marketing e escala",
+        "SLA e suporte prioritário dedicado"
       ]
     }
   ];
@@ -76,23 +83,28 @@ export default function Pricing() {
               key={idx}
               className={`rounded-3xl p-6 sm:p-10 flex flex-col justify-between transition-all duration-300 bg-white border ${
                 plan.highlight
-                  ? 'border-2 border-orange-500 shadow-2xl shadow-orange-500/10 relative lg:-translate-y-3'
+                  ? 'border-2 border-blue-600 shadow-2xl shadow-blue-600/15 relative lg:-translate-y-3'
                   : 'border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md'
               }`}
             >
               {plan.tag && (
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-600 text-white px-5 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-md">
+                <div className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-5 py-1 rounded-full text-xs font-black uppercase tracking-wider shadow-md ${
+                  plan.highlight ? 'bg-blue-600 text-white' : 'bg-slate-900 text-white'
+                }`}>
                   {plan.tag}
                 </div>
               )}
 
               <div>
+                <span className="inline-block text-[11px] font-extrabold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-3">
+                  {plan.badge}
+                </span>
                 <h3 className="text-2xl font-black text-slate-950 mb-2">{plan.name}</h3>
-                <p className="text-slate-600 text-sm mb-6 min-h-[40px] leading-relaxed">{plan.description}</p>
+                <p className="text-slate-600 text-sm mb-6 min-h-10 leading-relaxed">{plan.description}</p>
                 
                 <div className="mb-8 pb-6 border-b border-slate-100">
                   {plan.price === "Sob Consulta" ? (
-                    <div className="flex flex-col justify-center h-[70px]">
+                    <div className="flex flex-col justify-center h-17.5">
                       <span className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">PROJETO CUSTOMIZADO</span>
                       <span className="text-3xl font-black text-slate-950">Sob Consulta</span>
                     </div>
@@ -100,7 +112,7 @@ export default function Pricing() {
                     <div>
                       <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block">A PARTIR DE</span>
                       <div className="flex items-baseline gap-1 mt-1">
-                        <span className="text-xl font-bold text-orange-600">R$</span>
+                        <span className="text-xl font-bold text-blue-600">R$</span>
                         <span className="text-4xl sm:text-5xl font-black text-slate-950 tracking-tight">{plan.price}</span>
                         <span className="text-sm font-semibold text-slate-500 ml-1">{plan.period}</span>
                       </div>
