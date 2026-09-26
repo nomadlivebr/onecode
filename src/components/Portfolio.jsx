@@ -191,16 +191,16 @@ export default function Portfolio() {
 
         {/* Cabeçalho */}
         <div className="text-left sm:text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/90 border border-blue-300 text-blue-700 text-xs font-extrabold uppercase tracking-wider mb-4 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
             <span>Nossos Projetos</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3 leading-[1.15]">
-            Soluções que se transformam em <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-400">resultados</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight mb-3 leading-[1.15]">
+            Soluções que se transformam em <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 via-indigo-600 to-cyan-600">resultados</span>
           </h2>
 
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
             Confira alguns dos projetos que já desenvolvemos e veja como ajudamos empresas a inovar, escalar e alcançar seus objetivos.
           </p>
         </div>
@@ -215,7 +215,7 @@ export default function Portfolio() {
                 onClick={() => setActiveFilter(cat.id)}
                 className={`shrink-0 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 ${isSelected
                     ? 'bg-[#0066FF] text-white shadow-lg shadow-blue-600/30 scale-[1.02]'
-                    : 'bg-slate-900/80 text-slate-300 hover:text-white border border-slate-700/60 hover:bg-slate-800'
+                    : 'bg-white text-slate-700 hover:text-slate-950 border border-slate-300 hover:border-slate-400 hover:bg-slate-50 shadow-xs'
                   }`}
               >
                 {cat.label}
