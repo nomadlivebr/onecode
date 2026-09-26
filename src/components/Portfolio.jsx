@@ -132,20 +132,26 @@ const PROJECTS = [
   },
   {
     id: 6,
-    title: 'AutoStock Gestor de Peças',
+    title: 'AutoStock Gestor de Estoque',
     category: 'systems',
-    categoryLabel: 'Sistema de Estoque & Vendas',
-    tagline: 'Software web integrado para controle de estoque, ordens de serviço e emissão de orçamentos.',
-    metric: 'Zero extravios de estoque',
-    tags: ['Controle de Estoque', 'Nuvem AWS', 'Orçamentos em 1-clique'],
-    accentColor: 'from-cyan-600 to-blue-600',
+    categoryLabel: 'Sistema de Gestão & Estoque',
+    tagline: 'Controle total do seu estoque em tempo real. Gestão de faturamento, vendas, compras e relatórios inteligentes.',
+    metric: 'Zero extravios e +18% de vendas',
+    tags: ['Gestão de Estoque', 'Faturamento & Vendas', 'Multi-dispositivo', 'Dashboard em Tempo Real'],
+    accentColor: 'from-blue-700 via-sky-800 to-slate-950',
+    url: '/autostock_landing_page.html',
+    urlCta: 'Ver Sistema no Ar',
+    btnColor: 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/20',
+    isLive: true,
+    previewImg: '/autostock-preview.png',
     mockupType: 'dashboard',
     preview: {
-      headline: 'Estoque Centralizado',
-      sub: 'Gestão de 14.000 itens com alerta automático de reposição.',
-      cta: 'Nova Ordem',
-      stats: '14.200 itens catalogados',
-      badge: 'Gestão Inteligente'
+      headline: 'Controle Total do Estoque',
+      sub: 'Mais controle. Menos perdas. Mais resultados.',
+      cta: 'Ver no Ar',
+      stats: 'Sistema Online • v1.0',
+      badge: 'Case Real • No Ar',
+      domain: 'autostock.app.br'
     }
   },
   {
