@@ -108,14 +108,20 @@ const PROJECTS = [
     tagline: 'Simulador online de economia de energia integrado para captação massiva de orçamentos.',
     metric: 'Custo por Lead reduzido em 45%',
     tags: ['Calculadora Interativa', 'Mobile-First', 'Copy Persuasiva'],
-    accentColor: 'from-amber-500 to-orange-500',
+    accentColor: 'from-amber-600 via-orange-600 to-slate-950',
+    url: '/solartech_landing_page.html',
+    urlCta: 'Ver Landing Page no Ar',
+    btnColor: 'bg-amber-600 hover:bg-amber-500 shadow-amber-600/20',
+    isLive: true,
+    previewImg: '/solartech.png',
     mockupType: 'browser',
     preview: {
       headline: 'Economize até 95% na luz',
       sub: 'Simule sua economia em menos de 1 minuto.',
-      cta: 'Simular Gratuitamente',
+      cta: 'Ver no Ar',
       stats: 'R$ 1.8M economizados',
-      badge: 'Simulador Ativo'
+      badge: 'Case Real • No Ar',
+      domain: 'solartech.com.br'
     }
   },
   {
