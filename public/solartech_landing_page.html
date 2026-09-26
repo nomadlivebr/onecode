@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolarTech - Energia Solar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom colors based on the image */
+        .text-brand-orange { color: #f97316; }
+        .bg-brand-orange { background-color: #f97316; }
+        .hover-bg-brand-orange-dark:hover { background-color: #ea580c; }
+        .text-brand-blue { color: #1e3a8a; }
+        .bg-brand-dark-blue { background-color: #172554; }
+        .bg-brand-gray { background-color: #f8fafc; }
+        
+        /* Gradient for Hero Text if needed, though mostly solid colors */
+        .hero-bg-gradient {
+            background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(240,249,255,1) 100%);
+        }
+
+        /* Diagonal cut for Hero background image */
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md fixed w-full z-50 top-0 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="text-brand-orange">
+                        <i data-lucide="sun" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-2xl text-slate-800 leading-none block">SolarTech</span>
+                        <span class="text-xs text-slate-500 font-medium tracking-wider">ENERGIA SOLAR</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-slate-800 font-semibold border-b-2 border-brand-orange pb-1">Home</a>
+                    <a href="#" class="text-slate-500 hover:text-slate-800 font-medium transition">Como Funciona</a>
+                    <a href="#" class="text-slate-500 hover:text-slate-800 font-medium transition">Benefícios</a>
+                    <a href="#" class="text-slate-500 hover:text-slate-800 font-medium transition">Sobre Nós</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <button class="bg-brand-orange hover-bg-brand-orange-dark text-white px-6 py-2.5 rounded-full font-semibold flex items-center gap-2 transition shadow-lg shadow-orange-500/30">
+                        Simular Grátis
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-slate-500 hover:text-slate-800">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden hero-bg-gradient">
+        <!-- Background decorative elements for Hero -->
+        <div class="absolute top-0 right-0 w-1/2 h-full hidden lg:block hero-clip overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Casa com energia solar" class="object-cover w-full h-full opacity-90" />
+            <div class="absolute inset-0 bg-gradient-to-l from-transparent to-white"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 space-y-8">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 bg-orange-50 text-brand-orange px-4 py-1.5 rounded-full text-sm font-bold tracking-wide border border-orange-100">
+                        <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
+                        ENERGIA LIMPA E ECONÔMICA
+                    </div>
+                    
+                    <!-- Headline -->
+                    <h1 class="text-5xl lg:text-7xl font-extrabold text-slate-800 leading-[1.1]">
+                        Economize até <span class="text-brand-orange">80%</span><br />
+                        na sua conta de luz
+                    </h1>
+                    
+                    <!-- Subheadline -->
+                    <p class="text-lg lg:text-xl text-slate-600 max-w-lg leading-relaxed font-medium">
+                        Simule sua economia em menos de 1 minuto e descubra como a energia solar pode transformar o seu consumo.
+                    </p>
+                    
+                    <!-- Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button class="bg-brand-orange hover-bg-brand-orange-dark text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition shadow-xl shadow-orange-500/40 text-lg">
+                            Simular Gratuitamente
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                        <button class="bg-white border-2 border-slate-200 hover:border-slate-300 text-slate-700 px-8 py-4 rounded-full font-bold flex items-center justify-center gap-3 transition text-lg group">
+                            <div class="bg-slate-100 p-1.5 rounded-full group-hover:bg-slate-200 transition">
+                                <i data-lucide="play" class="w-4 h-4 fill-slate-700"></i>
+                            </div>
+                            Saiba como funciona
+                        </button>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="flex flex-wrap items-center gap-6 pt-6 text-sm font-medium text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="flame" class="w-5 h-5 text-slate-400"></i>
+                            Projeto personalizado
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="dollar-sign" class="w-5 h-5 text-slate-400"></i>
+                            Sem burocracia
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="leaf" class="w-5 h-5 text-slate-400"></i>
+                            Energia limpa e renovável
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Floating Card (Visible mainly on Desktop to the right) -->
+                <div class="lg:col-span-5 relative hidden lg:block">
+                    <!-- The main image is in the background, but we add the floating "Economia" card -->
+                    <div class="absolute top-1/4 -left-12 bg-white p-5 rounded-2xl shadow-2xl flex items-center gap-4 z-20 animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-orange-100 p-3 rounded-full text-brand-orange">
+                            <i data-lucide="zap" class="w-8 h-8 fill-current"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500 font-semibold mb-1">Sua economia estimada</p>
+                            <p class="text-2xl font-black text-slate-800">R$ 1,8M</p>
+                            <p class="text-xs text-slate-400 font-medium">em até 25 anos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador Info Section (Dark Mode) -->
+    <section class="bg-brand-dark-blue text-white py-20 lg:py-24 relative overflow-hidden">
+        <!-- Abstract background shape -->
+        <div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+             <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="w-full h-full">
+                <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" />
+                <path d="M50,0 Q100,50 50,100 Q0,50 50,0 Z" fill="currentColor" />
+             </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Left Content -->
+                <div class="space-y-6">
+                    <p class="text-brand-orange font-bold text-sm tracking-widest uppercase">Nosso Simulador</p>
+                    <h2 class="text-4xl lg:text-5xl font-bold leading-tight">
+                        Tecnologia e inteligência<br />para o seu bolso
+                    </h2>
+                    <p class="text-blue-100 text-lg max-w-md leading-relaxed font-light">
+                        Com o nosso simulador, você calcula de forma rápida e simples o quanto pode economizar com energia solar, baseado no seu consumo e na sua região.
+                    </p>
+
+                    <!-- Features Grid -->
+                    <div class="grid grid-cols-2 gap-8 pt-8">
+                        <!-- Feature 1 -->
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-xl border border-blue-800 bg-blue-900/50 flex items-center justify-center text-brand-orange">
+                                <i data-lucide="zap" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">Cálculo preciso</h3>
+                            <p class="text-blue-200 text-sm leading-relaxed">Leva em conta seu consumo e a incidência solar da sua região.</p>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-xl border border-blue-800 bg-blue-900/50 flex items-center justify-center text-brand-orange">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">Rápido e fácil</h3>
+                            <p class="text-blue-200 text-sm leading-relaxed">Em menos de 1 minuto você tem o resultado.</p>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-xl border border-blue-800 bg-blue-900/50 flex items-center justify-center text-brand-orange">
+                                <i data-lucide="file-text" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">Sem compromisso</h3>
+                            <p class="text-blue-200 text-sm leading-relaxed">Simule grátis e só fale se fizer sentido para você.</p>
+                        </div>
+                        <!-- Feature 4 -->
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 rounded-xl border border-blue-800 bg-blue-900/50 flex items-center justify-center text-brand-orange">
+                                <i data-lucide="leaf" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">Mais sustentabilidade</h3>
+                            <p class="text-blue-200 text-sm leading-relaxed">Contribua para um futuro mais limpo e renovável.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content (Mockup Card) -->
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-6 shadow-2xl relative z-10 text-slate-800">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
+                            <div class="bg-orange-100 p-2 rounded-lg text-brand-orange">
+                                <i data-lucide="sun" class="w-5 h-5 fill-current"></i>
+                            </div>
+                            <span class="font-bold">Simulação de Economia</span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <div class="flex-1 space-y-4">
+                                <div>
+                                    <p class="text-xs text-slate-500 font-semibold mb-1">Sua economia estimada</p>
+                                    <div class="flex items-baseline gap-2">
+                                        <h4 class="text-3xl font-black text-brand-dark-blue">R$ 1.800,00</h4>
+                                        <span class="text-sm font-bold text-slate-500">/mês</span>
+                                        <span class="ml-2 bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">Até 95%</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Progress bar dummy -->
+                                <div class="w-full bg-slate-100 rounded-full h-2.5 mb-4">
+                                  <div class="bg-teal-500 h-2.5 rounded-full" style="width: 85%"></div>
+                                </div>
+
+                                <div>
+                                    <p class="text-xs text-slate-500 font-semibold mb-1">Valor total em 25 anos</p>
+                                    <h4 class="text-xl font-bold text-slate-800">R$ 1.800.000,00</h4>
+                                </div>
+                            </div>
+                            <!-- Small image thumbnail inside card -->
+                            <div class="w-full sm:w-32 h-32 rounded-xl overflow-hidden shadow-inner flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Casa solar thumbnail" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative back shadow for card -->
+                    <div class="absolute inset-0 bg-brand-orange/20 rounded-3xl transform translate-x-4 translate-y-4 -z-10 blur-xl"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works Section -->
+    <section class="py-20 lg:py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="mb-16">
+                <p class="text-brand-orange font-bold text-sm tracking-widest uppercase mb-3">Como Funciona</p>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-800 mb-4">É simples, rápido e sem complicação</h2>
+                <p class="text-slate-500 text-lg max-w-2xl leading-relaxed">
+                    Em poucos passos, você descobre o quanto pode economizar com energia solar e dá o primeiro passo para um futuro mais sustentável.
+                </p>
+            </div>
+
+            <!-- Linear Steps -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Connector line (Desktop only) -->
+                <div class="hidden md:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-orange-100 z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col items-start">
+                    <div class="flex items-center justify-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-orange-500/30">1</div>
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700">
+                            <i data-lucide="calculator" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Preencha seus dados</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Informe seu consumo de energia e sua localização.</p>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-brand-orange absolute right-0 top-8 hidden md:block opacity-50 transform translate-x-1/2"></i>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 flex flex-col items-start">
+                    <div class="flex items-center justify-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-orange-500/30">2</div>
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700">
+                            <i data-lucide="sun" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Nosso sistema calcula</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Em segundos, você recebe sua estimativa de economia.</p>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-brand-orange absolute right-0 top-8 hidden md:block opacity-50 transform translate-x-1/2"></i>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 flex flex-col items-start">
+                    <div class="flex items-center justify-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-orange-500/30">3</div>
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700">
+                            <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Veja o resultado</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Entenda o valor da economia, o investimento e o retorno.</p>
+                    <i data-lucide="arrow-right" class="w-5 h-5 text-brand-orange absolute right-0 top-8 hidden md:block opacity-50 transform translate-x-1/2"></i>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative z-10 flex flex-col items-start">
+                    <div class="flex items-center justify-center gap-4 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-orange-500/30">4</div>
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700">
+                            <i data-lucide="leaf" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">Solicite seu projeto</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Se estiver de acordo, fale com nossa equipe e receba um projeto personalizado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section class="py-12 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
+                
+                <!-- Headline block -->
+                <div class="flex-shrink-0 text-center lg:text-left">
+                    <p class="text-brand-orange font-bold text-xs tracking-widest uppercase mb-1">Por que escolher a SolarTech?</p>
+                    <h2 class="text-2xl lg:text-3xl font-extrabold text-slate-800">Mais de 5.000 famílias<br/>já economizaram com a gente</h2>
+                </div>
+
+                <!-- Divider -->
+                <div class="hidden lg:block w-px h-16 bg-slate-200"></div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full">
+                    <!-- Stat 1 -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check-circle" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-black text-slate-800">+5.000</p>
+                            <p class="text-sm text-slate-500 font-medium">projetos realizados</p>
+                        </div>
+                    </div>
+                    <!-- Stat 2 -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-black text-slate-800">98%</p>
+                            <p class="text-sm text-slate-500 font-medium">de satisfação</p>
+                        </div>
+                    </div>
+                    <!-- Stat 3 -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-orange-100 text-brand-orange flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="leaf" class="w-6 h-6 fill-current"></i>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-black text-slate-800">+120 mil</p>
+                            <p class="text-sm text-slate-500 font-medium">toneladas de CO₂ evitadas</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Footer Section -->
+    <section class="relative py-20 lg:py-28 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Painéis solares ao pôr do sol" class="w-full h-full object-cover">
+            <!-- Dark gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/80 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-2xl">
+                <p class="text-brand-orange font-bold text-sm tracking-widest uppercase mb-3">Pronto para economizar?</p>
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+                    Faça sua simulação agora e veja quanto você pode economizar.
+                </h2>
+                <p class="text-gray-300 text-lg mb-8 font-medium">É rápido, gratuito e sem compromisso.</p>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <button class="w-full sm:w-auto bg-brand-orange hover-bg-brand-orange-dark text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 transition shadow-lg shadow-orange-500/50 text-lg">
+                        Simular Gratuitamente
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                    <div class="flex items-center gap-2 text-gray-400 text-sm">
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                        <span>Seus dados estão seguros</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
