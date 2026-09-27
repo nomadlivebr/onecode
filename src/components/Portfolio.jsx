@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, ArrowUpRight, ArrowRight, Sparkles, Layers, TrendingUp, Monitor, CheckCircle } from 'lucide-react';
+import { ArrowRight, Monitor, Layers, TrendingUp } from 'lucide-react';
 
 const CATEGORIES = [
   { id: 'all', label: 'Todos os Projetos' },
@@ -13,166 +13,140 @@ const PROJECTS = [
     id: 1,
     title: 'TreinoPago — SaaS Fitness',
     category: 'systems',
-    categoryLabel: 'Plataforma SaaS & Sistema Web',
-    tagline: 'Plataforma completa para Personal Trainers: gestão de alunos, criação de treinos com IA, cobranças automáticas no WhatsApp e financeiro integrado.',
-    metric: 'Automação de Treinos com IA & Cobrança Pix',
-    tags: ['SaaS Completo', 'Automação WhatsApp', 'Pix & Cartão', 'Treinos com IA', 'React & Nuvem'],
-    accentColor: 'from-emerald-700 via-teal-800 to-slate-950',
-    url: 'https://treinopago.vercel.app/',
-    urlCta: 'Acessar Plataforma Online',
-    btnColor: 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-600/20',
-    isLive: true,
-    logoImg: '/treinopago-logo.png',
+    categoryLabel: 'Sistemas Web',
+    iconType: 'barbell',
+    iconClass: 'ph ph-barbell',
+    tagline: 'Plataforma completa para Personal Trainers gerenciar alunos, treinos e cobranças de forma automatizada e integrada ao WhatsApp.',
     previewImg: '/treinopago-preview.png',
-    mockupType: 'saas-live',
-    preview: {
-      headline: 'Gestão Inteligente para Personal Trainers',
-      sub: 'Alunos, treinos e pagamentos automatizados no WhatsApp.',
-      cta: 'Ver no Ar',
-      stats: 'Plataforma Ativa',
-      badge: 'Case Real • SaaS Live',
-      domain: 'treinopago.vercel.app'
-    }
+    url: 'https://treinopago.vercel.app/',
+    isLive: true,
   },
   {
     id: 2,
     title: 'Nexus Dental Clinic',
     category: 'sites',
-    categoryLabel: 'Site Institucional & LP',
+    categoryLabel: 'Site Institucional',
+    iconType: 'tooth',
+    iconClass: 'ph ph-tooth',
     tagline: 'Presença digital premium para odontologia estética com agendamento direto, prova social e design responsivo de alta precisão.',
-    metric: '+180% contatos qualificados',
-    tags: ['Site Institucional', 'Landing Page', 'SEO Local', 'Agendamento WhatsApp'],
-    accentColor: 'from-cyan-800 via-teal-800 to-slate-950',
-    url: '/nexus_dental_clinic.html',
-    urlCta: 'Ver Site no Ar (MVP)',
-    btnColor: 'bg-cyan-600 hover:bg-cyan-500 shadow-cyan-600/20',
-    isLive: true,
     previewImg: '/nexus-preview.png',
-    mockupType: 'browser',
-    preview: {
-      headline: 'Cuidado Odontológico Excepcional',
-      sub: 'Odontologia de alta precisão em clínica de referência.',
-      cta: 'Ver no Ar',
-      stats: 'MVP Online',
-      badge: 'Case Real • No Ar',
-      domain: 'nexusdental.com.br'
-    }
+    url: '/nexus_dental_clinic.html',
+    isLive: true,
   },
   {
     id: 3,
     title: 'FlowLog Logística',
     category: 'systems',
-    categoryLabel: 'Sistema Web & Painel ERP',
+    categoryLabel: 'Sistemas Web',
+    iconType: 'truck',
+    iconClass: 'ph ph-truck',
     tagline: 'Plataforma para gestão de frotas, despachos e relatórios operacionais em tempo real.',
-    metric: 'Economia de 22h semanais',
-    tags: ['Dashboard Web', 'API REST', 'Relatórios PDF', 'Multi-usuário'],
-    accentColor: 'from-blue-700 to-sky-700',
-    url: '/dashboard_flowlog_log_stica.html',
-    urlCta: 'Ver Dashboard (MVP)',
-    btnColor: 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/20',
-    isLive: true,
     previewImg: '/dashboard-flowlog.png',
-    mockupType: 'dashboard',
-    preview: {
-      headline: 'Painel Operacional',
-      sub: 'Status de entregas e despacho de cargas em rota.',
-      cta: 'Ver no Ar',
-      stats: '99.9% entregas no prazo',
-      badge: 'MVP Online',
-      domain: 'flowlog.app.br'
-    }
+    url: '/dashboard_flowlog_log_stica.html',
+    isLive: true,
   },
   {
     id: 4,
-    title: 'Alpha Imóveis Prime',
-    category: 'marketing',
-    categoryLabel: 'Campanha de Marketing & Funil',
-    tagline: 'Estratégia completa de anúncios no Google e Meta Ads para empreendimentos de alto padrão.',
-    metric: '3.4x de Retorno sobre Investimento (ROAS)',
-    tags: ['Google Ads', 'Meta Ads', 'Página de Vendas', 'CRM Integrado'],
-    accentColor: 'from-emerald-700 via-teal-800 to-slate-950',
-    url: '/alpha_imoveis_landing_page.html',
-    urlCta: 'Ver Landing Page no Ar',
-    btnColor: 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-600/20',
+    title: 'AutoStock Gestor de Estoque',
+    category: 'systems',
+    categoryLabel: 'Sistemas Web',
+    iconType: 'package',
+    iconClass: 'ph ph-package',
+    tagline: 'Controle total do seu estoque em tempo real. Gestão de faturamento, vendas, compras e relatórios inteligentes.',
+    previewImg: '/autostock-preview.png',
+    url: '/autostock_landing_page.html',
     isLive: true,
-    previewImg: '/alpha-hero.jpg',
-    mockupType: 'campaign',
-    preview: {
-      headline: 'Lançamento Jardins',
-      sub: 'Apartamentos exclusivos de 3 e 4 suítes.',
-      cta: 'Ver no Ar',
-      stats: '48 cotas reservadas',
-      badge: 'Case Real • No Ar',
-      domain: 'alphaimoveisprime.com.br'
-    }
   },
   {
     id: 5,
-    title: 'SolarTech Energia Solar',
-    category: 'sites',
-    categoryLabel: 'Landing Page de Alta Conversão',
-    tagline: 'Simulador online de economia de energia integrado para captação massiva de orçamentos.',
-    metric: 'Custo por Lead reduzido em 45%',
-    tags: ['Calculadora Interativa', 'Mobile-First', 'Copy Persuasiva'],
-    accentColor: 'from-amber-600 via-orange-600 to-slate-950',
-    url: '/solartech_landing_page.html',
-    urlCta: 'Ver Landing Page no Ar',
-    btnColor: 'bg-amber-600 hover:bg-amber-500 shadow-amber-600/20',
+    title: 'Alpha Imóveis Prime',
+    category: 'marketing',
+    categoryLabel: 'Site Institucional',
+    iconType: 'building',
+    iconClass: 'ph ph-buildings',
+    tagline: 'Estratégia completa de anúncios no Google e Meta Ads com landing page de alta conversão para empreendimentos de alto padrão.',
+    previewImg: '/alpha-hero.jpg',
+    url: '/alpha_imoveis_landing_page.html',
     isLive: true,
-    previewImg: '/solartech.png',
-    mockupType: 'browser',
-    preview: {
-      headline: 'Economize até 80% na luz',
-      sub: 'Simule sua economia em menos de 1 minuto.',
-      cta: 'Ver no Ar',
-      stats: 'R$ 1.8M economizados',
-      badge: 'Case Real • No Ar',
-      domain: 'solartech.com.br'
-    }
   },
   {
     id: 6,
-    title: 'AutoStock Gestor de Estoque',
-    category: 'systems',
-    categoryLabel: 'Sistema de Gestão & Estoque',
-    tagline: 'Controle total do seu estoque em tempo real. Gestão de faturamento, vendas, compras e relatórios inteligentes.',
-    metric: 'Zero extravios e +18% de vendas',
-    tags: ['Gestão de Estoque', 'Faturamento & Vendas', 'Multi-dispositivo', 'Dashboard em Tempo Real'],
-    accentColor: 'from-blue-700 via-sky-800 to-slate-950',
-    url: '/autostock_landing_page.html',
-    urlCta: 'Ver Sistema no Ar',
-    btnColor: 'bg-blue-600 hover:bg-blue-500 shadow-blue-600/20',
+    title: 'SolarTech Energia Solar',
+    category: 'sites',
+    categoryLabel: 'Landing Page',
+    iconType: 'sun',
+    iconClass: 'ph ph-sun',
+    tagline: 'Simulador online de economia de energia integrado para captação massiva de orçamentos e captação de clientes.',
+    previewImg: '/solartech.png',
+    url: '/solartech_landing_page.html',
     isLive: true,
-    previewImg: '/autostock-preview.png',
-    mockupType: 'dashboard',
-    preview: {
-      headline: 'Controle Total do Estoque',
-      sub: 'Mais controle. Menos perdas. Mais resultados.',
-      cta: 'Ver no Ar',
-      stats: 'Sistema Online • v1.0',
-      badge: 'Case Real • No Ar',
-      domain: 'autostock.app.br'
-    }
   },
   {
     id: 7,
     title: 'Dra. Camila Dermatologia',
     category: 'marketing',
-    categoryLabel: 'Tráfego & Posicionamento',
+    categoryLabel: 'Estratégia & Tráfego',
+    iconType: 'sparkle',
+    iconClass: 'ph ph-sparkle',
     tagline: 'Funil perpétuo de atração para procedimentos estéticos premium com agenda cheia com 30 dias de antecedência.',
-    metric: 'Agenda 100% preenchida',
-    tags: ['Instagram Ads', 'Página Rápida', 'Qualificação Automática'],
-    accentColor: 'from-blue-900 to-slate-900',
-    mockupType: 'campaign',
-    preview: {
-      headline: 'Protocolos Avançados',
-      sub: 'Rejuvenescimento e harmonização natural.',
-      cta: 'Consultar Disponibilidade',
-      stats: 'Fila de espera ativa',
-      badge: 'Autoridade Médica'
-    }
+    previewImg: null,
+    url: '#briefing',
+    isLive: false,
   }
 ];
+
+function ProjectIcon({ iconType, iconClass }) {
+  if (iconType === 'barbell') {
+    return (
+      <svg className="w-4 h-4 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.5 9h-.75V7a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v4h-9.5V7a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v2H3.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1.75v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-4h9.5v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2h1.75a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z" />
+      </svg>
+    );
+  }
+  if (iconType === 'tooth') {
+    return (
+      <svg className="w-4 h-4 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.8 5.7C17.6 3.4 15 2 12 2S6.4 3.4 5.2 5.7C4.1 7.8 4 10.3 5 12.6l1.6 4c.6 1.5 1.7 3.9 3.2 5.4.5.5 1.2.7 1.9.5.7-.3 1.1-.9 1.1-1.6v-4.1a1 1 0 0 1 2 0v4.1c0 .7.4 1.3 1.1 1.6.3.1.5.2.8.2.5 0 .9-.2 1.2-.5 1.5-1.5 2.6-3.9 3.2-5.4l1.6-4c1-2.3.9-4.8-.2-6.9z" />
+      </svg>
+    );
+  }
+  if (iconType === 'truck') {
+    return (
+      <svg className="w-4 h-4 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.5 8H17V5a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h1.05a3 3 0 0 0 5.9 0h4.1a3 3 0 0 0 5.9 0H21a1 1 0 0 0 1-1v-5a3 3 0 0 0-2.5-3zM7 17.5a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5zm10 0a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5zM20 12h-3V9.5h2.3a1.5 1.5 0 0 1 1.5 1.5z" />
+      </svg>
+    );
+  }
+  if (iconType === 'package') {
+    return (
+      <svg className="w-4 h-4 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2l9 4.5v11L12 22l-9-4.5v-11L12 2zm0 2.24L5.48 7.5 12 10.76 18.52 7.5 12 4.24zM4.5 9.17v6.66l6.5 3.25v-6.66L4.5 9.17zm15 0l-6.5 3.25v6.66l6.5-3.25V9.17z" />
+      </svg>
+    );
+  }
+  if (iconType === 'building') {
+    return (
+      <svg className="w-4 h-4 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 2H9c-1.1 0-2 .9-2 2v3H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM5 9h2v2H5V9zm0 4h2v2H5v-2zm0 4h2v2H5v-2zm14 2H9V4h10v15zm-8-13h2v2h-2V6zm4 0h2v2h-2V6zm-4 4h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm4 0h2v2h-2v-2z" />
+      </svg>
+    );
+  }
+  if (iconType === 'sun') {
+    return (
+      <svg className="w-4 h-4 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3zm0-10a1 1 0 0 0 1-1V2a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1zm0 14a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1zm8-8a1 1 0 0 0-1-1h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1zm-14 0a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1zm12.36-5.36a1 1 0 0 0-1.41 0l-1.41 1.41a1 1 0 1 0 1.41 1.41l1.41-1.41a1 1 0 0 0 0-1.41zm-10.72 10.72a1 1 0 0 0-1.41 0l-1.41 1.41a1 1 0 1 0 1.41 1.41l1.41-1.41a1 1 0 0 0 0-1.41zm0-10.72a1 1 0 0 0 0 1.41l1.41 1.41a1 1 0 1 0 1.41-1.41l-1.41-1.41a1 1 0 0 0-1.41 0zm10.72 10.72a1 1 0 0 0 0 1.41l1.41 1.41a1 1 0 1 0 1.41-1.41l-1.41-1.41a1 1 0 0 0-1.41 0z" />
+      </svg>
+    );
+  }
+  if (iconClass) {
+    return <i className={`${iconClass} text-blue-400 text-base shrink-0`}></i>;
+  }
+  return (
+    <svg className="w-4 h-4 text-blue-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.3 7.2-6.3-4.6-6.3 4.6 2.3-7.2-6-4.8h7.6z" />
+    </svg>
+  );
+}
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -205,7 +179,7 @@ export default function Portfolio() {
           </p>
         </div>
 
-        {/* Filtros de Categoria em Pills Horizontais com scroll fluido no mobile */}
+        {/* Filtros de Categoria em Pills Horizontais */}
         <div className="flex overflow-x-auto sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-10 sm:mb-16 pb-2 no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0">
           {CATEGORIES.map(cat => {
             const isSelected = activeFilter === cat.id;
@@ -229,154 +203,96 @@ export default function Portfolio() {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group bg-slate-900/90 rounded-3xl border border-slate-800/80 shadow-xl hover:shadow-2xl hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1.5"
+              className="group rounded-2xl sm:rounded-3xl bg-[#060c18] border border-slate-800/90 hover:border-blue-500/50 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:shadow-2xl hover:shadow-blue-950/50 hover:-translate-y-1.5"
             >
               <div>
-                {/* Visual Preview / Mockup Simulado ou Real do Projeto */}
-                <div className={`relative h-48 sm:h-56 bg-linear-to-br ${project.accentColor} p-4 sm:p-5 flex flex-col justify-between text-white overflow-hidden`}>
-                  {/* Se houver imagem real de preview (screenshot) */}
+                {/* Imagem do Mockup / Preview com fade suave na base */}
+                <div className="relative h-48 sm:h-52 md:h-56 w-full overflow-hidden bg-[#060c18]">
                   {project.previewImg ? (
-                    <div className="absolute inset-0">
+                    <>
                       <img
                         src={project.previewImg}
                         alt={project.title}
-                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/70 to-slate-950/30" />
-                    </div>
+                      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-[#060c18] via-[#060c18]/60 to-transparent pointer-events-none" />
+                    </>
                   ) : (
-                    <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[16px_16px]" />
-                  )}
+                    /* Fundo Padrão Moderno para itens em desenvolvimento */
+                    <div className="relative w-full h-full flex flex-col items-center justify-center p-6 bg-linear-to-br from-[#0c1933] via-[#071124] to-[#040812] border-b border-slate-800/60 overflow-hidden">
+                      {/* Grid pontilhado tecnológico */}
+                      <div className="absolute inset-0 bg-[radial-gradient(rgba(56,189,248,0.2)_1px,transparent_1px)] bg-size-[18px_18px] opacity-40 pointer-events-none" />
 
-                  {/* Badges superiores flutuantes exatamente como na imagem enviada */}
-                  <div className="relative z-10 flex items-center justify-between gap-2">
-                    <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-600/90 text-white backdrop-blur-md shadow-md">
-                      {project.category === 'systems' ? '• SISTEMAS WEB' : project.category === 'sites' ? '• SITE INSTITUCIONAL' : '• ESTRATÉGIA'}
-                    </span>
+                      {/* Efeitos de luz sutil */}
+                      <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-blue-500/15 blur-2xl pointer-events-none" />
+                      <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-cyan-500/10 blur-2xl pointer-events-none" />
 
-                    {project.isLive ? (
-                      <span className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        MVP ONLINE
-                      </span>
-                    ) : (
-                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-slate-700/60 backdrop-blur-md">
-                        {project.preview.badge}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Conteúdo central do mockup */}
-                  <div className="relative z-10 my-auto">
-                    {project.logoImg && (
-                      <div className="mb-2">
-                        <img
-                          src={project.logoImg}
-                          alt={project.title}
-                          className="h-6 sm:h-7 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] filter brightness-110"
-                        />
+                      {/* Ícone e texto central com visual de alta tecnologia */}
+                      <div className="relative z-10 flex flex-col items-center text-center">
+                        <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-2.5 shadow-[0_0_20px_rgba(59,130,246,0.2)] group-hover:scale-110 group-hover:border-blue-400/60 transition-all duration-300">
+                          <ProjectIcon iconType={project.iconType} iconClass={project.iconClass} />
+                        </div>
+                        <span className="text-xs font-semibold text-slate-200 tracking-wide">
+                          Projeto em Finalização
+                        </span>
+                        <span className="text-[11px] text-slate-400 mt-0.5">
+                          Disponível em breve no portfólio
+                        </span>
                       </div>
-                    )}
-                    <p className="text-base sm:text-xl font-black leading-tight drop-shadow-sm mb-1 text-white">
-                      {project.preview.headline}
-                    </p>
-                    <p className="text-xs text-white/80 line-clamp-2">
-                      {project.preview.sub}
-                    </p>
-                  </div>
 
-                  {/* Rodapé do preview */}
-                  <div className="relative z-10 flex items-center justify-between pt-2 border-t border-white/10">
-                    <span className="text-[11px] font-medium text-white/80 flex items-center gap-1.5">
-                      {project.isLive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />}
-                      {project.preview.stats}
-                    </span>
-                    {project.url ? (
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-[11px] font-bold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <span>Ver projeto</span>
-                        <ArrowUpRight size={13} strokeWidth={2.5} />
-                      </a>
-                    ) : (
-                      <span className="text-[11px] font-bold text-white/70">
-                        {project.preview.cta}
-                      </span>
-                    )}
-                  </div>
+                      <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-[#060c18] to-transparent pointer-events-none" />
+                    </div>
+                  )}
                 </div>
 
-                {/* Conteúdo do Card */}
-                <div className="p-5 sm:p-7">
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors flex items-center gap-2">
-                    {project.url ? (
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="hover:underline flex items-center gap-2"
-                      >
-                        <span>{project.title}</span>
-                        <ExternalLink size={16} className="text-slate-400 group-hover:text-blue-400 transition-colors shrink-0" />
-                      </a>
+                {/* Corpo do Card */}
+                <div className="px-6 pt-5 pb-6 sm:px-7 sm:pt-6 sm:pb-7 flex flex-col">
+                  {/* Categoria + Status Online / Em breve */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <ProjectIcon iconType={project.iconType} iconClass={project.iconClass} />
+                    <span className="text-xs sm:text-sm font-medium text-slate-300">
+                      {project.categoryLabel}
+                    </span>
+                    {project.isLive !== false ? (
+                      <>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 ml-1 shrink-0 animate-pulse"></span>
+                        <span className="text-xs sm:text-sm font-medium text-slate-400">
+                          Online
+                        </span>
+                      </>
                     ) : (
-                      project.title
+                      <>
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 ml-1 shrink-0 animate-pulse"></span>
+                        <span className="text-xs sm:text-sm font-medium text-amber-400/90">
+                          Em breve
+                        </span>
+                      </>
                     )}
+                  </div>
+
+                  {/* Título do Projeto */}
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5 group-hover:text-blue-400 transition-colors">
+                    {project.title}
                   </h3>
 
-                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+                  {/* Descrição / Tagline */}
+                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
                     {project.tagline}
                   </p>
 
-                  {/* Destaque de Métrica / Resultado */}
-                  <div className="mb-4 p-2.5 sm:p-3 rounded-xl border bg-slate-950/60 border-slate-800 text-slate-200 flex items-center gap-2.5">
-                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></div>
-                    <span className="text-xs font-semibold text-slate-300">
-                      {project.metric}
-                    </span>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
-                    {project.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="text-[10px] sm:text-[11px] font-semibold text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700/50"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  {/* Botão Ver Projeto estilo Pill */}
+                  <div>
+                    <a
+                      href={project.url || '#briefing'}
+                      target={project.url && (project.url.startsWith('http') || project.url.endsWith('.html')) ? '_blank' : '_self'}
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium text-white bg-[#061226]/80 hover:bg-blue-900/40 border border-blue-500/40 hover:border-blue-400 transition-all duration-200 group/btn shadow-xs active:scale-95"
+                    >
+                      <span>{project.isLive !== false ? 'Ver projeto' : 'Consultar projeto'}</span>
+                      <ArrowRight size={14} className="group-hover/btn:translate-x-0.5 transition-transform text-blue-400 group-hover/btn:text-white" />
+                    </a>
                   </div>
                 </div>
-              </div>
-
-              {/* Botões de Ação no estilo mobile da imagem */}
-              <div className="px-5 sm:px-7 pb-5 pt-3 border-t border-slate-800/80 flex flex-col gap-2.5 bg-slate-950/40">
-                {project.url && (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white bg-[#0066FF] hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 active:scale-[0.98]"
-                  >
-                    <span>Ver demonstração</span>
-                    <ArrowRight size={15} />
-                  </a>
-                )}
-
-                <a
-                  href={`https://wa.me/5511999999999?text=${encodeURIComponent(`Olá, gostei do projeto ${project.title}${project.url ? ` (${project.url})` : ''} no portfólio da One Code e quero um resultado similar para o meu negócio.`)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full py-2.5 px-4 rounded-xl font-semibold text-xs sm:text-sm text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700/70 transition-all flex items-center justify-center gap-2"
-                >
-                  <i className="ph ph-envelope-simple text-base"></i>
-                  <span>Solicitar orçamento</span>
-                </a>
               </div>
             </div>
           ))}
